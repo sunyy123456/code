@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            测试题1：先执行变量提升，在执行函数提升
+            （这道题看视频讲的很模糊  弹幕说是因为：变量提升不会覆盖函数提升，而变量赋值才会覆盖函数提升）
+
+            补充：函数提升优先级高于变量提升，指的是函数提升比变量提升晚（这样函数提升就能覆盖掉变量提升）
+        */
+        function a(){}
+        var a;
+        console.log(typeof a); // 'function'
+
+        /*
+            测试题2：
+            
+                根据我自己的理解：无论这个变量b有没有定义，都可以使用window.b去访问
+                    所以b一直都是window的属性
+        */
+        if(!(b in window)){  // b in window 是真的，所以这条语句不执行
+            var b = 1;
+        }
+        console.log(b);  // undefined  
+
+        /*
+            测试题3：
+                报错，返回c is not a function
+
+            这道题相当于：
+                var c;
+                function c(c){
+                    console.log(c);
+                }
+                c = 1;
+                c(2);  //所以c这时是变量，不是函数，就会报错
+                
+        */
+        var c = 1;
+        function c(c){
+            console.log(c);
+        }
+        c(2);  // 
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

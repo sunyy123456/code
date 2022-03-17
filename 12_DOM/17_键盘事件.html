@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        window.onload = function(){
+
+            /*
+                键盘事件：
+                    onkeydown
+                        - 按键被按下
+                        - 对于onkeydown来说，如果一直不松手，则事件一直被触发
+                        - 当onkeydown连续触发时，第一次和第二次之间会间隔稍微长一些，其他的会非常快
+                            这种设计是为了防止误操作的发生
+                    onkeyup
+                        - 按键被松开
+
+                键盘事件一般都会绑定一些可以获取到焦点的对象或者时document
+            */
+            document.onkeydown = function(event){
+                event = event || window.event;
+                /*
+                    (尚硅谷中讲述 可以使用keyCode来获取按键的编码  根据弹幕，该属性已经弃用)
+                    可以通过key来获取按键
+                        通过它可以判断哪个键被按下
+
+                    除了key，还提供以下几个属性
+                        altKey
+                        ctrlKey
+                        shiftKey
+                            - 这三个用来判断alt、ctrl和shift是否被按下
+                                如果被按下则返回true，否则返回false
+                */
+
+                /*
+                    通过实践表明：大键盘和小键盘的数字的编码不同
+                */
+                
+                console.log(event.key);
+
+                // 判读y是否被按下
+                // if(event.key == "y"){
+                //     console.log("y被按下");
+                // }
+
+                // 判断y和ctrl是否同时被按下
+                // if(event.key == "y" && event.ctrlKey){
+                //     console.log("y和ctrl同时被按下");
+                // }
+
+            };
+            // document.onkeyup = function(){
+            //     console.log("按键被松开");
+            // }
+
+            var input = document.getElementsByTagName("input")[0];
+            input.onkeydown = function(event){
+
+                // 使文本框不能输入数字
+                event = event || window.event;
+                if(event.key >= "0" && event.key <= "9"){
+                    return false;
+                }
+
+                console.log("按键被按下");
+
+                /*
+                    在文本框中输入内容，属于onkeydown的默认行为
+                    如果在onkeydown中取消了默认行为，则输入的内容，不会出现在文本框中
+                    return false;
+                */
+            };
+        };
+    </script>
+</head>
+<body>
+    <input type="text">
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            数组（Array）
+                - 数组也是一个对象
+                - 和普通的对象功能类似，也用来存储一些值的
+                - 不同的是普通对象使用字符串作为属性名的
+                    而数组是使用数字作为索引来操作元素
+                - 索引：
+                    从 0 开始的整数就是索引
+                - 数组的存储性能比普通对象好，在开发中经常使用数组来存储一些数据
+                - 使用typeof检查一个数组时，会返回object
+        */
+
+        // 创建数组对象
+        var arr = new Array();
+
+        console.log(arr);
+
+        /*
+            向数组中添加元素
+                语法：
+                    数组[索引] = 值
+        */
+        arr[0] = 10;
+        arr[1] = 50;
+        arr[2] = 12;
+
+        /*
+            读取数组中的元素
+                语法：
+                    数组[索引]
+                如果不存在的索引，不会报错，会返回undefined
+        */
+        console.log(arr[1]);
+
+        /*
+            获取数组的长度
+                可以使用length来获取数组长度
+                    语法：数组.length
+            
+            对于连续的数组，使用length可以获取数组的长度
+            对于非连续的数组，使用length可以获取到最大索引 + 1
+                尽量不要创建非连续的数组
+        */
+        console.log(arr.length);
+
+        /*
+            修改length
+                如果修改的length大于原长度，则多出部分会空出来
+                如果修改的length小于原长度，则多出的元素会被删除
+        */
+        // arr.length = 10;
+        arr.length = 2;
+        console.log(arr.length);
+        console.log(arr);
+
+        /*
+            向数组的最后一个位置添加元素
+                语法：数组[数组.length] = 值；
+        */
+        arr[arr.length] = 50; //注意写arr.length  而不是length
+
+
+        /*
+            使用字面量来创建数组
+                语法：[]
+        */
+        // var arr2 = [];
+
+        //  使用字面量创建数组时，可以在创建时就指定数组中的元素
+        var arr2 = [1,2,3,1,4];
+        console.log(arr2);
+
+        // 使用构造函数创建数组时也可以同时添加元素，将要添加的元素作为构造函数的参数传递
+        // 元素之间用逗号隔开
+        var arr3 = new Array(2,3,4);
+        console.log(arr3);
+
+        // 创建一个数组，只有一个元素10
+        var arr4 = [10];
+        console.log(arr4);
+        
+        // 创建一个长度为10的数组
+        var arr5 = new Array(10);
+        console.log(arr5);
+
+        // 数组的元素可以是任意类型
+        arr = ["hello", 1, true, null, undefined];
+        console.log(arr);
+
+        // 元素也可以是对象
+        var obj = {
+            name:"孙悟空"
+        };
+        arr[arr.length] = obj;
+        console.log(arr);
+
+        // 也可以是一个函数
+        arr =  [function(){console.log("我是数组中的函数");}];
+        console.log(arr);
+        arr[0]();  // 调用arr中的函数元素
+
+        //数组也可以放数组，称为二维数组
+        arr = [[1,2],[3,4],[5]];
+        console.log(arr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+#total{
+    margin: 20px 100px;
+}
+
+.inner{
+    margin-top: 10px;
+    padding: 20px 0 10px 10px;
+    border: solid black 2px;
+    width: 600px;
+    /* float: left; */
+}
+.inner p{
+    display: block;
+}
+.inner ul li{
+    font-size: 16px;
+    display: inline-block;
+    background-color: rgb(80, 219, 80);
+    /* width: 40px; */
+    padding: 0 5px;
+    line-height: 25px;
+    text-align: center;
+    margin: 20px 2px;
+    border: black 1px solid;
+}
+
+
+#btnList{
+    width: 400px;
+    position: absolute;
+    top: 10px;
+    right: 200px;
+}
+
+#btnList button{
+    display: block;
+    width: 400px;
+    /* text-align: center; */
+    margin-top: 10px;
+}

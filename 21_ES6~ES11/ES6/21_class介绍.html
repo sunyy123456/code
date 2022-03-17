@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Phone(brand, price){
+        //     this.brand = brand;
+        //     this.price = price;
+        // }
+        // // 添加方法
+        // Phone.prototype.call = function(){
+        //     console.log("打电话");
+        // }
+        // let huawei = new Phone("华为", 5999);
+        // huawei.call();
+        // console.log(huawei);
+
+        // class
+        class Phone{
+            // 注意名字是固定的，不能修改
+            // 当new的时候就会自动执行constructor()
+            constructor(brand, price){
+                this.brand = brand;
+                this.price = price;
+            }
+
+            // 方法必须使用该语法，即 方法名(){}，不能使用ES5的完整形式
+            call(){
+                console.log("打电话");
+            }
+        }
+        let huawei = new Phone("华为", 5999);
+        huawei.call();
+        console.log(huawei);
+    </script>
+</body>
+</html>

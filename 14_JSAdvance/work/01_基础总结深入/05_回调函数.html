@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            1. 什么函数是回调函数 ？
+                1）自己定义的
+                2）没有调用
+                3）但最终执行了
+
+            2. 常见的回调函数 ？
+                dom事件回调函数（实现与用户交互重要的点）
+                定时器回调函数
+                ajax请求回调函数（实现与后台交互重要的点）
+                生命周期回调函数
+        */
+
+        window.onload = function(){
+            document.getElementById("btn").onclick = function(){  // dom事件回调函数
+                alert(this.innerHTML);
+            };
+
+            setTimeout(function(){  // 定时器回调函数
+                alert("hello");
+            }, 3000);
+        };
+
+    </script>
+</head>
+<body>
+    <button id="btn">啦啦啦</button>
+</body>
+</html>

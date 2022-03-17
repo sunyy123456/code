@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        let arr = [101, 102, 103, 104, 105];
+        /*
+            注意for..of 和 for...in的区别
+        */
+        for(let i of arr){
+            console.log(i);  // 返回的是value值
+        }
+        for(let i in arr){
+            console.log(i);  // 返回的是index值
+        }
+
+        /*
+            arr[Symbol.iterator]()
+            数组的 iterator 方法，默认情况下，与 values() 返回值相同， 
+                arr[Symbol.iterator] 则会返回 values() 函数。
+        */
+
+        let iterator = arr[Symbol.iterator]();
+        console.log(iterator.next());  // 返回的是一个对象（包含value和done属性）
+        // done属性若为false，说明没有遍历完，若为true则为遍历完成
+
+        /*
+            两种迭代方式
+                var arr = ['a', 'b', 'c', 'd', 'e'];
+                var eArr = arr[Symbol.iterator]();
+                // 浏览器必须支持 for...of 循环
+                for (let letter of eArr) {
+                    console.log(letter);
+                }
+
+
+                var arr = ['a', 'b', 'c', 'd', 'e'];
+                var eArr = arr[Symbol.iterator]();
+                console.log(eArr.next().value); // a
+                console.log(eArr.next().value); // b
+                console.log(eArr.next().value); // c
+                console.log(eArr.next().value); // d
+                console.log(eArr.next().value); // e
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            1. 在全局代码执行前，JS引擎就会创建一个栈来存储管理所有的执行上下文对象
+            2. 在全局执行上下文前（window）确定后，将其添加到栈中（压栈）
+            3. 在函数执行上下文创建后，将其添加到栈中（压栈）
+            4. 在当前函数执行完后，将栈顶的对象移除（出栈）
+            5. 当所有的代码执行完后，栈中只剩下window
+        */
+
+        var a = 10;
+        var bar = function(x){
+            var b = 5;
+            foo(x + b);  
+        }
+        var foo = function(y){  // 这条语句执行不等于函数执行，这条语句是赋值语句
+            var c = 5;
+            console.log(a + c + y);
+        }
+        bar(10);  // 这时才是函数执行，而这时foo已经定义了，所以不会报错
+
+
+
+        /*
+            问题：
+                1. 输出什么 ？
+                    gb:undefined
+                    fb:1
+                    fb:2
+                    fb:3
+                    fe:3
+                    fe:2
+                    fe:1
+                    ge:1
+
+                2. 整个过程中产生了几个执行上下文 ？
+                    5个
+        */
+
+        console.log("gb:" + i);
+        var i = 1;
+        f(1);
+        function f(i){
+            if(i == 4) return ;
+            console.log("fb:" + i);
+            f(i + 1);
+            console.log("fe:" + i);
+        }
+        console.log("ge:" + i);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

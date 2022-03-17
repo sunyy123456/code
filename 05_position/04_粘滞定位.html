@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>导航条练习</title>
+    <link rel="stylesheet" href="../03_layout/CSS/reset.css">
+
+    <style> 
+
+        body{
+            height: 2000px;
+        }
+        /* 先考虑结构，在使用CSS */
+        /* 布局的元素要用块元素！！！ */
+
+        /* 设置nav */
+        .nav{
+            width: 1205px;
+            height: 48px;
+            background-color: rgb(232, 231, 227);
+            margin: 100px auto;
+
+
+            /*  
+                粘滞定位
+                    - 当元素的position属性值设置为sticky时，则开启了元素的粘滞定位
+                    - 粘滞定位和相对定位的特点基本一致
+                        
+                    
+                    由于兼容性很低，所以基本不使用粘滞定位（仅了解即可）
+            */
+            position: sticky;
+            top: 0px;
+
+        }
+
+        /* 设置nav中的li */
+        .nav li{
+            /* 设置li向左浮动  以使li横向排列 */
+            float: left;
+            /* 设置li的高度 */
+            height: 100%;
+
+            line-height: 48px;
+        }
+
+        .nav a{
+            /* 将a转换为块元素 */
+            display: block;  /*  a转换为块元素后，会继承li的高度 */
+            text-decoration: none;
+            color: #777;
+            font-size: 18px;
+
+            padding: 0  39px;
+        }
+
+        /* 设置鼠标移入的效果 */
+        .nav a:hover{
+            background-color: #3F3F3F;
+            color: #E8E7E3;
+        }
+    </style>
+</head>
+<body>
+    <!-- 创建导航条的结构 -->
+    <ul class="nav">
+        <li>
+            <a href="javasript:;">HTML/CSS</a>
+        </li>
+        
+        <li>
+            <a href="javasript:;">Browser Side</a>
+        </li>
+        <li>
+            <a href="javasript:;">Server Side</a>
+        </li>
+        <li>
+            <a href="javasript:;">Programming</a>
+        </li>
+        <li>
+            <a href="javasript:;">XML</a>
+        </li>
+        <li>
+            <a href="javasript:;">Web Building</a>
+        </li>
+        <li>
+            <a href="javasript:;">Reference</a>
+        </li>
+
+    </ul>
+</body>
+</html>

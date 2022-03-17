@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            height: 100px;
+            width: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <!--  
+        需求： 
+            当按下键盘后，向服务端发送请求
+            把服务端返回的响应体结果呈现在div中
+    -->
+    <div id="result"></div>
+
+    <script>
+        const result = document.getElementById("result");
+        window.onkeydown = function(){
+            // 1. 创建对象
+            const xhr = new XMLHttpRequest();
+            // 2. 初始化   设置请求方法和url
+            xhr.open("GET","http://127.0.0.1:8000/json-server");
+            // 3. 发送
+            xhr.send();
+            // 4. 事件绑定  处理服务端返回的结果
+            // on  表示当...时
+            // readyState  是xhr的属性，表示状态有五种 0 1 2 3 4
+            xhr.onreadystatechange = function(){
+                // 判断（服务端返回了所有的结果）
+                if(xhr.readyState == 4){
+                    // 判断响应状态码（如果是2xx，就都属于成功）
+                    if(xhr.status >= 200 && xhr.status < 300){
+                        result.innerHTML = xhr.response;
+                    }
+                }
+            }
+        };
+    </script>
+</body>
+</html>

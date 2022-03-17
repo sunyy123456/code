@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Number.EPSILON 是 JS表示的最小精度
+        // EPSILON 属性的值接近于 2.2204460492503130808472633361816E-16
+        // 可以把它当作c中的eps
+        function equal(a, b){
+            if(Math.abs(a - b) < Number.EPSILON){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        console.log(0.1 + 0.2 === 0.3);  // false
+        console.log(equal(0.1 + 0.2, 0.3));  // true
+
+        // 2. 二进制、八进制和十六进制
+        // 二进制 0b 开头
+        let b = 0b1010;
+        console.log(b);
+
+        // 十进制 0o 开头 
+        let o = 0o10;
+        console.log(o);
+        
+        // 十六进制 0x 开头
+        let x = 0x10;
+        console.log(x);
+
+        // 3. Number.isFinite  检测一个数值是否是有限数
+        console.log(Number.isFinite(101));  // true
+        console.log(Number.isFinite(101 / 0));  // false
+        console.log(Number.isFinite(Infinity));  // false
+
+        // 4. Number.isNaN  检测一个数值是否是NaN
+        //  (ES5中isNaN是一个单独的函数，ES6把它作为Number的方法)
+        console.log(Number.isNaN(NaN));  // true
+
+        // 5. Number.parseInt 和 Number.parseFloat  字符串转换为整数
+        // (ES5中parseInt 和 parseFloat是一个单独的函数，ES6把它作为Number的方法)
+        console.log(Number.parseInt("1221aa122"));  // 1221
+        console.log(Number.parseFloat("122.1aa122"));  // 122.1
+
+        // 6. Number.isInteger  判断一个数是否是整数
+        console.log(Number.isInteger(5)); // true
+        console.log(Number.isInteger(5.1)); // false
+        console.log(Number.isInteger(5.0)); // true  (注意5.0被认为是整数)
+
+        // 7. Math.trunc  将数字的小数部分抹掉
+        console.log(Math.trunc(3.6)); // 3
+
+        // 8. Math.sign  判断一个数到底是正数、负数还是0
+        // 正数返回1，负数返回-1， 0返回0，NaN返回NaN
+        console.log(Math.sign(0.5));  // 1
+        console.log(Math.sign(0));  // 0
+        console.log(Math.sign(-11100.5));  // -1
+        console.log(Math.sign(NaN));  // NaN
+
+
+    </script>
+</body>
+</html>

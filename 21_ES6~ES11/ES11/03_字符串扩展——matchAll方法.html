@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // matchAll() 方法返回一个包含所有匹配正则表达式的结果及分组捕获组的迭代器。
+
+        let str = `
+            <ul>
+                <li>
+                    <a>肖申克的救赎</a>
+                    <p>上映时间:1994-09-10</p>
+                </li>
+                <li>
+                    <a>阿甘正传</a>
+                    <p>上映时间:1994-07-06</p>
+                </li>
+            </ul>`;
+
+        // 声明正则
+        // 需求：获取两部电影的名称和上映时间
+
+        // RegExp必须是设置了全局模式g的形式
+        const reg = /<li>.*?<a>(.*?)<\/a>.*?<p>(.*?)<\/p>/gs;
+        // 返回值是一个迭代器
+        let result = str.matchAll(reg);
+
+        // for...of遍历
+        for(let v of result){
+            /* 
+                index为 0 的是 整体匹配结果，index 为 1 的是第一个捕获，index 为 2 的是第二个捕获...以此类推
+            */
+            console.log(v);
+            console.log(v[0]); 
+            console.log(v[1]); 
+            console.log(v[2]);
+        }
+
+        // 也可以使用扩展运算符
+        const arr = [...result];
+        console.log(arr);
+
+    </script>
+</body>
+</html>

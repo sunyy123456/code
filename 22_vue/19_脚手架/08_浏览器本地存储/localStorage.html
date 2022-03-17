@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage</title>
+</head>
+<body>
+    <h2>localStorage</h2>
+    <button onclick="saveData()">点我保存一个数据</button>
+    <button onclick="readData()">点我读取一个数据</button>
+    <button onclick="deleteData()">点我删除一个数据</button>
+    <button onclick="deleteAllData()">点我清空一个数据</button>
+
+
+    <script>
+        let p = {name:"syy", age: 20};
+        function saveData(){
+            // localStorage.setItem(名，值)  名和值都是字符串形式
+            localStorage.setItem('msg', "hello");
+            // 当存储的不是字符串类型时，会自动调用toString方法变成字符串
+            localStorage.setItem('msg2', 555);
+            /*
+                p是一个对象，当调用toString方法时会变成 [object Object]，
+                    看不出原本数据时什么样子，不符合预期结果
+                    
+                所以可以使用JSON.stringify,将对象变成可以识别数据的字符串
+                
+            */
+            localStorage.setItem('person', p);
+            localStorage.setItem('person2', JSON.stringify(p));
+        }
+        function readData(){
+            // localStorage.getItem(名)  
+            console.log(localStorage.getItem('msg'));
+            console.log(localStorage.getItem('msg2'));
+            let result = localStorage.getItem('person2');
+            console.log(result);
+            // JSON.parse()  解析JSON字符串，构造由字符串描述的JavaScript值或对
+            console.log(JSON.parse(result));
+
+            // 注意：当读取不存在数据时，会返回null
+            console.log(localStorage.getItem("msg3"));  // null
+
+            result = localStorage.getItem("person4");
+            console.log(result); // null
+        }
+        function deleteData(){
+            localStorage.removeItem('msg');
+        }
+        function deleteAllData(){
+            localStorage.clear();
+        }
+        </script>
+</body>
+</html>

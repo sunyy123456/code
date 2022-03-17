@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+            样式的继承：我们为一个元素设置一个样式，也会应用到它的后代元素 
+            继承是发生在祖先和后代之间的
+
+            继承的设计是为了方便我们开发，利用继承可以将一个通用的样式统一设置到共同的祖先元素上
+            这样只需设置一次即可，让所有元素都具有改样式
+
+            注意：并不是所有样式都会被继承
+                例如 背景相关的，布局相关等的这些样式都不会被继承
+         */
+        p{
+            color: rgb(255, 145, 0);
+            background-color: rgb(42, 165, 42);
+            /* 注意：p中的span并没有继承p的背景颜色，span那只是透过去的颜色 */
+        }
+    </style>
+</head>
+<body>
+    <p>
+        我是p元素
+        <spapn>我是p元素的span</span>
+    </p>
+</body>
+</html>

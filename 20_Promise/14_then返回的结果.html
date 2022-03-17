@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            resolve("Ok");
+        });
+
+        let result = p.then(value => {
+            // 1. 抛出错误，then返回的结果就是rejected
+            // throw "出错误";
+            // 2. 如果返回结果为 非Promise类型的对象，则then返回的结果为成功的Promise对象，且成功的值就是返回的值
+            // return 521;
+            // 3. 如果返回的结果为Promise对象，则返回的结果决定了then的结果
+            return Promise.resolve("OK");
+        }, reason => {
+
+        });
+
+        console.log(result);
+
+    </script>
+</body>
+</html>

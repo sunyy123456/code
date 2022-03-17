@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--  
+        可以将js代码编写到外部js文件中，然后通过script标签引入
+            写到外部文件中可以在不同的页面中同时引用，也可以利用到浏览器的缓存机制
+            推荐使用
+    -->
+
+    <!-- 
+        script一旦用于引入外部文件了，就不能再在这个script里编写代码了，即使编写也会被浏览器忽略 
+        如果需要则可以再创建一个新的script标签标签，用于编写js代码
+    -->
+
+    <script src="./script.js">
+        alert("我是内部的js代码");  // 词条不会被执行
+    </script>
+    <script>
+        alert("我是内部的js代码"); 
+    </script>
+    
+
+    <!--  
+        可以将js代码编写到script标签里
+        <script>
+            alert("!!!");
+        </script>
+
+    -->
+</head>
+<body>
+    <!--  
+        虽然可以写在标签的属性值，但他们属于结构与行为耦合，不方便维护，所以不推荐
+    -->
+
+    <!-- 
+        可以将JS代码编写到button标签的onclick属性中
+            当点击按钮时，js代码才会执行
+    -->
+    <!-- 
+        注意：alert里要用单引号  因为前面onclick属性用的双引号，如果alert也使用双引号会发生嵌套 
+             注意alert写完要有分号
+    -->
+    <button onclick="alert('点击成功'); ">点我</button>
+
+    <!--  
+        可以将js代码写在超链接的href属性中，这样当点击超链接时会执行js代码
+            注意要先写 javascript:
+            之前在css学习时讲过 当href="javascript:;"时可以呈现 点击无跳转的效果，就是根据这条
+    -->
+    <a href="javascript:alert('哈哈哈')">点我</a>
+</body>
+</html>

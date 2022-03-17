@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            margin-right: 200px;
+            float: left;
+        }
+    </style>
+    <script>
+        // 声明变量
+        let a;
+        let b,c;
+        let d = 1, e = "heol", f = [];
+
+        // 1. 变量不能重复声明（var 是可以的）
+        /*
+            let g = 1;
+            let g = 10;  报错        
+        */
+
+        // 2. 块级作用域  全局， 函数， eval（ES5严格模式下）
+        /*
+            {
+                let h = 1;
+            }
+            console.log(h);  // 报错
+        */
+
+        // 3. 不存在变量提升
+        /*
+            console.log(i);  // 报错
+            let i = 1;
+        */
+
+        // 不影响作用域链
+        /*
+            let name = "syy";
+            function fun(){
+                console.log(name);
+            }
+            fun();        
+        */
+
+        // let 实例；
+        window.onload = function(){
+            var box = document.getElementsByClassName("box");
+            /*
+                for(var i = 0; i < box.length; i++){
+                    box[i].onclick = function() {
+                        this.style.backgroundColor = "red";  
+                        // box[i].style.backgroundColor = "red";  写法是不对的
+                    };
+                }
+            */
+            for(let i = 0; i < box.length; i++){
+                box[i].onclick = function() {
+                    // this.style.backgroundColor = "red";  
+                    box[i].style.backgroundColor = "red";  // 两个写法均可以
+                };
+            }
+
+        };
+
+
+
+    
+    </script>
+</head>
+<body>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</body>
+</html>

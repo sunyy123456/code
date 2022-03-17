@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 国外 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- 国内 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.24.0/axios.min.js"></script>
+</head>
+<body>
+    <button>GET请求</button>
+    <button>POST请求</button>
+    <button>PUT请求</button>
+    <button>DELETE请求</button>
+
+
+    <script>
+        /*
+            https://github.com/axios/axios  axios的文档
+        */
+        console.log(axios);
+        /*
+            GET    /posts
+            GET    /posts/1
+                - GET可用于获取文章 ，/1 指定是获取id为1的文章
+            POST   /posts
+                - POST可用于添加文章，不写id
+            PUT    /posts/1
+                - PUT可用于更新文章，要写id
+            PATCH  /posts/1
+            DELETE /posts/1
+                - DELETE可用于删除文章，要写id  
+        
+        */
+        
+        let btns = document.querySelectorAll('button');
+        
+        btns[0].onclick = function(){
+            // 发送AJAX请求
+
+            // axios接收一个对象作为参数，产生的返回值为Promise类型
+            axios({
+                // 请求类型
+                method: "GET",
+                // URL
+                url: 'http://localhost:3000/posts/2', // json-server中/2指的是id为2的文章
+            }).then(response => {
+                console.log(response);
+            })
+        }
+
+        // 添加一篇新的文章
+        btns[1].onclick = function(){
+            // 发送AJAX请求
+
+            axios({
+                // 请求类型
+                method: "POST",
+                // URL
+                url: 'http://localhost:3000/posts', 
+                // 请求体
+                data:{
+                    // id浏览器会自动加上，不用我们设置id
+                    title:"lalal",
+                    author:"jack"
+                }
+            }).then(response => {
+                console.log(response);
+            })
+        }
+        // 更新
+        btns[2].onclick = function(){
+            // 发送AJAX请求
+
+            axios({
+                // 请求类型
+                method: "PUT",
+                // URL
+                url: 'http://localhost:3000/posts/3', 
+                // 请求体
+                data:{
+                    author:"rose"
+                }
+            }).then(response => {
+                console.log(response);
+            })
+        }
+        // 删除
+        btns[3].onclick = function(){
+            // 发送AJAX请求
+
+            axios({
+                // 请求类型
+                method: "DELETE",
+                // URL
+                url: 'http://localhost:3000/posts/3', 
+                // 删除是不需要请求体的
+            }).then(response => {
+                console.log(response);
+            })
+        }
+    </script>
+</body>
+</html>

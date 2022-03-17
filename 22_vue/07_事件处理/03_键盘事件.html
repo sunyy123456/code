@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘事件</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--  
+        1. Vue中常用的键盘别名
+            回车 => enter
+            删除 => delete  (捕获"删除"和"退格"键)
+            退出 => esc
+            空格 => space
+            换行 => tab     (特殊,必须配合keydown去使用)
+            上 => up
+            下 => down
+            左 => left
+            右 => right
+
+        2. Vue 未提供别名的按键,可以使用按键原始的key值去绑定,但注意要转为kebab-case(短横线命名)
+
+        3. 系统修饰键(用法特殊):ctrl,alt,shift,meta
+            - 配合keyup使用:按下修饰键的同时,再按下其他键,随后释放其他键,事件才被触发
+            - 配合keydown使用:正常触发事件
+
+        4. 可以使用keyCode去指定具体的按键(不推荐)
+
+        5. Vue.config.keyCodes.自定义键名 = 键码,可以去定制按键别名
+
+        6. 键盘事件:
+            keyup: 松开键盘
+            keydown: 按下键盘
+        
+        键盘事件.键盘别名  =>  按下/松开 键盘名对应的键盘时触发
+    -->
+    <div id="root">
+        <h2>欢迎{{name}}</h2>
+        <!-- tab是移位的按键,如果和keyup绑定,当松开tab键时,焦点已经不在原来的框内,所以不能和keyup绑定 -->
+        <!-- <input type="text" placeholder="按下回车提示输入" @keydown.tab = "showInfo"> -->
+
+        <!-- <input type="text" placeholder="按下回车提示输入" @keydown.huiche = "showInfo"> -->
+
+        <!-- keyup.ctrl.y 按完ctrl和y后,松开y 就会触发 -->
+        <!-- <input type="text" placeholder="按下回车提示输入" @keyup.ctrl.y = "showInfo"> -->
+
+        <!-- 按ctrl,之后按下y时就会触发 -->
+        <input type="text" placeholder="按下回车提示输入" @keydown.ctrl.y = "showInfo">
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        Vue.config.keyCodes.huiche = 13;
+
+        new Vue({
+            el:"#root",
+            data:{
+                name:"syy"
+            },
+            methods: {
+                showInfo(){
+                    alert("你好");
+                }
+            }
+        })
+    </script>
+</body>
+</html>

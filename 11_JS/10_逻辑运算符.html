@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            JS中为我们提供了三种逻辑运算符
+                ！  非
+                    - ！可以对一个值进行非运算
+                    - 所谓非运算，就是对一个布尔值进行取反操作
+                    - 对一个值进行两次取反，该值不会发生变化
+                    - 如果对一个非布尔值进行运算，则会先将其转换为布尔值，再进行运算
+                        所以我们可以根据该特点，将一个其他类型的数据转换为布尔值类型
+                            可以为一个任意数据类型取两次反将其转换为布尔值，原理与Boolean()函数一样
+                &&  与
+                    - &&可以对符号两侧的值进行与运算并返回结果
+                    -运算规则：
+                        - 只要有一个false，就返回false
+                        - JS中的“与”属于短路的与
+                            如果第一个值为false，则不会看第二个值
+                ||  或
+                    - ||可以对符号两侧的值进行或运算并返回结果
+                    - 运算规则：
+                        - 两个值中只要有一个为true，就返回true
+                    - JS中的“或”属于短路的或
+                            如果第一个值为true，则不会看第二个值     
+
+        */
+       
+        // false && alert("lll");
+        // true && alert("hhh");
+
+        /*
+            && || 非布尔值的情况
+            - 对于非布尔值进行或运算时，会先将其转换为布尔值，再进行运算，并且返回原值
+            - 与运算:
+                - 如果第一个值为true,则必然返回第二个值
+                - 如果第一个值为false,则直接返回第一个值
+                注意返回的是原值,不是返回true或false
+            - 或运算:
+                - 如果第一个值为true,则直接返回第一个值
+                - 如果第一个值为false,则必然返回第二个值
+        */
+
+
+        var result = 1 && 2;  //结果为2
+        result = 2 && 1;  //结果为1
+
+        result = 0 && NaN; //结果为0
+        result = NaN && 0; //结果为NaN
+
+        result = "" || "Hello"  //结果为Hello
+        result = -1 || "Hello"  //结果为-1
+        console.log("result = " + result);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

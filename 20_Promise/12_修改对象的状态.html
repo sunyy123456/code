@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // 1. resolve 函数
+            // resolve("OK");  // pending  =>  fullfilled / resolved
+            // 2. reject 函数
+            // reject("err");  // pending  =>  rejected
+            // 3. 抛出错误
+            // throw "出错了";
+
+
+
+            // Promise对象只能修改一次！！！
+            // 只能从pending转为成功或失败,不能从失败转成功,也不能成功转失败
+            // 如果既有resolve 又有reject,则只会执行上面的函数
+            /*
+                resolve("ok");
+                reject("err"); 
+                    - 只会执行第一句resolve()
+            */
+        });
+        console.log(p);
+    </script>
+</body>
+</html>

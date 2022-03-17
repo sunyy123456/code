@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="target.html" autocomplete="off">
+        <!--  
+            autocomplete  自动补全
+                - on  默认值  开启自动补全
+                - off  关闭自动补全
+                - 可以直接放在form上
+
+            readonly  将表单项设置为只读,数据会提交
+            disabled  将表单项设置为禁用,数据不会提交
+            autofocus  设置表单项自动获取焦点
+        -->
+        <input type="text" name="username" autocomplete="off" value="用户名" readonly>
+        <br><br>
+        <input type="text" name="1"  disabled >
+        <br><br>
+        <input type="text" name="2" autofocus>
+        <br><br>
+
+        <!-- color颜色 -->
+        <input type="color" value="color">
+        <!-- email  提交的时候会对你的格式进行检查 -->
+        <input type="email" >
+        <br>
+
+        <input type="submit">
+        <!-- reset 重置按钮 -->
+        <input type="reset">
+        <!-- button  普通的按钮   配合js -->
+        <input type="button" value="按钮">
+
+        <br><br>
+
+        <!-- 与之对应的可以使用button标签 -->
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+        <button type="button">按钮</button>
+
+        <br>
+    </form>
+</body>
+</html>

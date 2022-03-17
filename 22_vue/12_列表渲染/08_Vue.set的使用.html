@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.set的使用</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>欢迎{{name}}</h2>
+        <h2>{{address}}</h2>
+        <hr>
+        <h1>学生信息</h1>
+        <button @click="addGender()">添加一个性别属性,默认值是男</button>
+        <h2>姓名:{{student.name}}</h2>
+        <h2 v-if="student.gender">性别:{{student.gender}}</h2>
+        <h2>年龄:真实{{student.age.rAge}},对外{{student.age.sAge}}</h2>
+        <h2>朋友们:</h2>
+        <ul>
+            <li v-for="(f, index) in student.friends" :key="index">
+                {{f.name}} --- {{f.age}}
+            </li>
+        </ul>
+
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const vm = new Vue({
+            el:"#root",
+            data:{
+                name:"syy",
+                address:"harbin",
+                student:{
+                    name:"Jack",
+                    age:{
+                        rAge:40,
+                        sAge:29
+                    },
+
+                    friends:[
+                        {name:"Tom", age:20},
+                        {name:"Jerry", age:18}
+                    ]
+                }
+            },
+            methods: {
+                addGender(){
+                    // Vue.set(target, index, value)
+                    // !!!注意对象不能是 Vue 实例，或者 Vue 实例的根数据对象。
+                    // 也就是说target不能是Vue或Vue._data
+
+                    // Vue.set(this.student, "gender", "男");
+                    this.$set(this.student, "gender", "男");
+                }
+            },
+        })
+
+        /*
+            当访问对象中的属性时,如果该对象没有这个属性,就会返回undefined
+                而undefined在Vue中不会显示在页面
+            如果没有这个对象才会报错
+
+            也就是说访问 a.b  如果b没有定义,则会返回undefined
+                            如果a没有定义,则会报错
+        */
+    </script>
+</body>
+</html>

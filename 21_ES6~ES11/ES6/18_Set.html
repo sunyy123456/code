@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Set
+                类似于数组，但成员唯一, 会自动去重
+                集中实现了iterator接口，所以可以使用扩展运算符和for of进行遍历
+                typeof  返回的是"Object"
+
+        */
+        let s = new Set();
+        let s2 = new Set(["lala", "jh", "lala"]);
+
+        // 元素个数  s.size()
+        console.log(s2.size);
+
+        // 添加新的元素  s.add()
+        s2.add("haha");
+
+        // 删除元素  s.delete()
+        s2.delete("jh");
+
+        // 检测   s.has()
+        console.log(s2.has("syy"));
+        
+        // 清空集合   s.clear();
+        // s2.clear();
+        console.log(s2); 
+
+        for(let v of s2){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

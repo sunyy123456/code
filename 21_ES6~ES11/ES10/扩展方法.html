@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>使用chrome查看！！！（qq浏览器无法显示）</h2>
+    <script>
+
+
+        /*
+            对象的扩展方法
+                Object.fromEntries 方法把键值对列表转换为一个对象。
+                Object.fromEntries 相当于 Object.entries 的逆运算
+                    Object.fromEntries  将二维数组转换为对象
+                    Object.entries  将对象转换为二维数组
+        */
+        const result1 = Object.fromEntries([
+            ["name", "syy"],
+            ["xueke", "math, chinese"]
+        ]);
+        console.log(result1);
+
+        const m = new Map();
+        m.set("name", "syy");
+        const result = Object.fromEntries(m);
+        console.log(result);
+
+
+        /*
+            字符串的扩展方法
+                trimStart  清楚字符串左侧空白
+                trimEnd  清楚字符串右侧空白
+        */
+        let str = "  syy  ";
+        console.log(str + "1");
+        console.log(str.trimStart() + "1");
+        console.log(str.trimEnd() + "1");
+
+
+        /*
+            数组的扩展方法
+                flat    将多维数组转换为低维数组
+                    参数是表示深度，默认参数是1
+                        如果参数是1，可以降一维转，即三维数组能转成二维
+                        如果参数是2，可以降两维转，即三维数组能转成一维
+                        ...
+        */
+        const arr = [1, 2, 3, 4, [5, 6, [7]]];
+
+        // 将里面的三维数组转换为一维数组
+        console.log(arr.flat(2));
+
+        // flatMap  首先使用映射函数映射每个元素，然后将结果压缩成一个新数组。
+        // 与 map 连着深度值为1的 flat 几乎相同，但 flatMap 通常在合并成一种方法的效率稍微高一些。
+
+        const arr2 = [1, 2, 3, 4];
+        const result3 = arr2.flatMap(item => [item * 10]);
+        console.log(result3);
+
+
+        /*
+            Symbol.prototype.description
+                description 是一个只读属性，它会返回 Symbol 对象的可选描述的字符串。
+        */
+        let s = Symbol("syy");
+
+        console.log(s.description); // syy
+    </script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            作用域
+                - 作用域指一个变量的作用的范围
+                - 在JS中一共有两种作用域
+                    1. 全局作用域
+                        - 直接编写在script标签中的JS代码，都在全局作用域
+                        - 全局作用域在页面打开时创建，在页面关闭时销毁
+                        - 在全局作用域中，有一个全局对象window，
+                            它代表的是浏览器的窗口，它由浏览器创建
+                            我们可以直接使用
+                        - 在全局作用域中，
+                            创建的变量都会作为window对象的属性保存
+                            创建的函数都会作为window对象的方法保存
+                    2. 函数作用域
+                        - 调用函数时创建函数作用域，函数执行完毕后，函数作用域销毁
+                        - 每调用一次函数，就会创建一个新的函数作用域，他们之间是互相独立的
+                        - 在函数作用域中可以访问到全局作用域的变量
+                            在全局作用域中无法访问到函数作用域的变量
+        */
+       
+        var a = 10;
+        console.log(window);
+
+        function fun(){
+            console.log("我是fun函数");
+        }
+        window.fun();
+
+        a = 123; // 如果不使用var关键字声明，则默认是 window.a = 123;
+        console.log("a = " + a);
+
+        /*
+            变量的声明提前
+                - 使用var关键字声明的变量，会在所有的代码执行前被声明（但不会赋值）
+                    但是如果声明变量时不使用var关键字声明，则不会声明提前
+
+            变量的声明提前
+                - 使用函数声明形式创建的函数 fuction 函数名(){}
+                    他会在所有的代码执行之前就被创建，所以可以在函数声明前就调用函数
+                - 使用函数表达式声明的函数 var f = function(){}
+                    不会被声明提前，所以不能在声明前调用
+                - 但在函数作用域中操作一个变量时，它会先在自身作用域中寻找，如果有就直接使用自身作用域的变量
+                    如果没有，则向上一级作用域中寻找，直到找到全局作用域
+                    如果全局作用域中依然没有找到，就会报错REferenceError
+                - 在函数中若想访问全局变量，可以使用window对象  window.a
+        */
+
+        console.log("b = " + b);  // b = undefined
+        var b = 456;
+
+        // console.log("c = " + c); // 报错
+        c = 789;  
+
+        fun();
+        function fun(){
+            console.log("啦啦啦");  //会执行此条语句
+        }
+
+        // fun2();
+        // var fun2 = function(){
+        //     console.log("hahaha");  //不会执行此条语句
+        // }
+
+        /***********************************/
+
+        var a = 10;
+        function fun(){
+            var a = "我是函数中的a";
+            console.log("a = " + a);
+        }
+        fun();
+
+        /*
+            在函数作用域中也有声明提前的特性
+                - 使用var关键字声明的变量，会在函数中所有代码执行之前被声明
+                - 函数声明也会在函数中所有的代码执行之前执行
+        */
+        function fun5(){
+            console.log("!!" + a);
+            var a = 15;
+
+            fun6();
+            function fun6(){
+                console.log("我是fun6");
+            }
+        }
+        fun5();  //undefined
+
+        /*
+            在函数中，不使用var声明的变量都会变成全局变量
+        */
+        var c = 10;
+        function fun7(){
+            console.log("c = " + c);
+            c = 15; // window.c = 15
+        }
+        fun7();
+        console.log("c = " + c); // c = 15  
+
+
+        var e = 17;
+        /*
+            定义形参就相当于在函数作用域中声明了变量
+            fun(a) 相当于  fun(){ var a; }
+        */
+        function fun8(e){
+            console.log(e);
+        }
+        fun8(15);  // 15
+        fun8(); // undefined
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

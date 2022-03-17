@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Promise.all
+                - 包含n个Promise对象，组成一个数组
+                - 返回一个新的Promise对象，只有所有的Promise都成功才成功，只要有一个失败就是直接失败
+                - 成功的结果是每一个Promise成功的结果组成的数组
+                - 失败的结果是那个Promise失败的结果
+        */
+        let p1 = new Promise((resolve, reject) => {
+            // resolve("OK");
+            reject("err");
+        });
+        let p2 = Promise.resolve(110);  // 注意resolve中传递非Promise的对象，就会返回成功
+        let p3 = Promise.resolve("lalala");
+
+        let result = Promise.all([p1, p2, p3]);  // 注意传递的是一个数组
+        console.log(result);
+    </script>
+</body>
+</html>

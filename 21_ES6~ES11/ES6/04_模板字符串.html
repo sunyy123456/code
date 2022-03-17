@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            ES6引进新的声明字符串的方式  `` '' "" (一共三种声明字符串的方式)
+        */
+
+        // 1. 声明
+        let name = `syy`;
+        console.log(name);
+
+        // 2. 内容中可以直接出现换行符
+        /*
+            以前要想用换行方式写字符串，要使用字符串拼接方式
+            let str = "a" + 
+                        "b" +
+                        "c" +
+                        "d";
+            不可以直接写 let str = "a +
+                                    b + 
+                                    c + 
+                                    d";
+        */
+        let str = `a +
+                    b + 
+                    c + 
+                    d`;
+        console.log(str); //输出是带换行的
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

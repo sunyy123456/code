@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Map
+                类似于对象，键值对的集合，
+                    但是与对象不同的是，键的范围不只是字符串，各种类型的值都可以是键
+                集中实现了iterator接口，所以可以使用扩展运算符和for of进行遍历
+                typeof  返回的是"Object"
+
+        */
+        let m = new Map();
+        
+        // 添加元素  m.set()
+        m.set("name", "syy");
+        m.set("change", function(){
+            console.log('修改姓名');
+        })
+        let key = {
+            school:"NEAU"
+        }
+        m.set(key, "harbin");
+        
+        // 元素个数  m.size()
+        console.log(m.size);
+        
+        // 删除元素  m.delete(key)
+        m.delete("name");
+        console.log(m);
+
+        // 获取  m.get(key);
+        console.log(m.get("change"));
+
+        // 清空   m.clear();
+        // m.clear();
+        console.log(m); 
+
+        for(let v of m){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

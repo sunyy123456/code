@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 生成器其实是一个特殊的函数
+        // 针对异步编程  纯回调函数的解决方案
+        // function和函数名中间要有 * 
+        function * gen(){
+            // console.log("hello");
+            // yield 可以当作是代码的分隔符，把代码分割成几块
+            console.log("qqqq");
+            yield "111";
+            console.log("hhhh");
+            yield "222";
+            console.log("llll");
+            yield "333";
+        }
+        let iterator = gen();
+        console.log(iterator.next());  // 这个时候才会执行生成器里的代码
+        console.log(iterator.next());  
+        console.log(iterator.next());  
+
+        // 也可以使用for of遍历
+        for(let v of gen()){
+            console.log(v);
+        }
+    </script>
+</body>
+</html>

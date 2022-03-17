@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            1. 什么是对象 ？
+                多个数据的封装体
+                用来保存多个数据的容器
+                一个对象代表现实中的一个食物
+            
+            2. 为什么要用对象 ？
+                统一管理多个数据
+
+            3. 对象的组成
+                属性：由属性名（字符串类型）和属性值（任意类型）组成
+                方法：一种特别的属性（属性值是函数）
+
+            4. 如何访问对象内部数据 ？
+                .属性名：编码简单，有时不能用
+                ['属性值']：编码麻烦，通用（不区分单双引号）
+
+        */
+
+        var obj = {
+            name:"tom",
+            age:15,
+            setName: function(name){
+                this.name = name;
+            },
+            setAge: function(age){
+                this.age = age;
+            }
+        };
+
+        obj.setName("Bob");
+        console.log(obj.name);
+
+        obj['setAge'](22);
+        console.log(obj['age']);  
+
+        /*
+            什么情况下必须使用['属性名']的方式 ？
+                1. 属性名包含特殊字符：- 空格
+                2. 属性名不确定
+        */
+        var obj2 = {};  // 一定要写 = {}，这样代表obj是一个对象
+        // 给obj2对象添加一个属性：content-type：text/json
+        // obj2.content-type = "text/json";  // 报错
+        obj2["content-type"] = "text/json";
+        console.log(obj2["content-type"]);
+
+        var propName = 'myAge';
+        var value = 18;
+        // obj2.propName = value;  // 这样写代表有个属性名为propName，而不是myAge
+        obj2[propName] = value; 
+        console.log(obj2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

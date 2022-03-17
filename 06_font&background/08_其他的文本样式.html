@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            font-size: 50px;
+
+            /*  
+                text-decoration  设置文本修饰
+                    可选值：
+                        none  默认值
+                        underline  下划线
+                        line-through  删除线
+                        overline  上划线
+            */
+            text-decoration: underline  red;
+        }
+
+        .box2{
+            width: 200px;
+            /*  
+                white-space  设置网页如何处理空白
+                    可选值：
+                        normal  默认值，正常
+                        nowrap  不换行
+                        pre  保留空白    
+            */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+</head>
+<body>
+    <div class="box2">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio enim molestiae hic in numquam quibusdam cumque tempore temporibus tenetur! Amet, eos autem! Officia animi facilis nulla alias cupiditate distinctio tempora!
+        aa
+            aa
+                aaa
+    </div>
+    <div class="box1"> 
+        啦啦啦啦啦啦啦啦
+    </div>
+</body>
+</html>

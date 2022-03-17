@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 200px;
+            height: 600px;
+            /* padding: 10px; */
+            border: 10px solid red;
+            background-color: #bfa;
+        }
+        #box2{
+            width: 100px;
+            height: 200px;
+            overflow: auto;
+            background-color: yellow;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+            var box1 = document.getElementById("box1");
+            var btn01 = document.getElementById("btn01");
+            btn01.onclick = function(){
+                /*
+                    clientWidth
+                    clientHeight
+                        - 这两个元素可以获取可见宽度和可见高度
+                        - 这些属性都是不带px的，返回值就是数字，可以直接进行计算
+                        - 会获取元素宽度和高度，包括内容区和内边距
+                        - 这些属性都是只读的，不能修改
+                */
+                // alert(box1.clientWidth);
+
+                /*
+                    offsetWidth
+                    offsetHeight
+                        - 可以获取元素的整个宽度和高度，包括内容区、内边距、边框
+                        - 这些属性都是不带px的，返回值就是数字，可以直接进行计算
+                */
+                // alert(box1.offsetWidth);
+                
+                /*
+                    offsetparent
+                        - 可以用来获取当前元素的定位父元素
+                        - 会获取当前元素最近的开启了定位的祖先元素
+                            如果所有的祖先元素都没有开启定位，则返回body
+                */
+
+                /*
+                    offsetLeft
+                        - 当前元素相对于其定位元素的水平偏移量
+                    offsetTop
+                        - 当前元素相对于其定位元素的垂直偏移量
+                    
+                */
+
+                /*
+                    scrollWidth
+                    scrollHeight
+                        - 可以获取元素整个滚动区域的宽度和高度（内容区和内边距）
+
+                    比如：父元素的高度是100，子元素是200(无内边距和边框)
+                        那么当出现滚动条时，父元素的scrollHeight就是200
+                */
+                // alert(box1.scrollHeight);
+
+                /*
+                    scrollLeft
+                        - 可以获取水平滚动条滚动的距离
+                    scrollTop
+                        - 可以获取垂直滚动条滚动的距离
+                        （同样也是给父元素使用）
+
+                    当满足scrollHeight - scrollTop == clientHeight时
+                        说明垂直滚动条到底了
+                    当满足scrollWidth - scrollLeft == clientWidth时
+                        说明垂直滚动条到底了
+                */
+                alert(box2.scrollTop);
+            };
+
+
+        };
+    </script>
+</head>
+<body>
+    <button id="btn01">点我</button>
+    <br><br><br>
+    <div id="box2">
+        <div id="box1"></div>
+    </div>
+
+</body>
+</html>

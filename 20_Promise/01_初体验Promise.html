@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-header">Promise 初体验</h2>
+        <button class="btn btn-primary" id="btn">点击抽奖</button>
+    </div>
+
+    <script>
+        // 生成随机数
+        function rand(m, n){
+            return Math.ceil(Math.random() * (n - m + 1)) + m - 1;
+        }
+
+        /*
+            点击按钮， 1s后显示是否中奖（30%中奖率）
+                若中奖，则弹出“恭喜恭喜”,并将中奖数字返回
+                若没有中奖，则弹出“再接再厉”，并将号码返回
+        */
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", () => {
+            // 不用Promise的方法
+            /*
+                setTimeout(() => {
+                    // 获取一个 1 - 100 的随机数
+                    let x = rand(1, 100);
+                    if(x <= 30){
+                        alert("恭喜恭喜, 您的中奖数字为：" + x);
+                    }else{
+                        alert("再接再厉,您的号码为：" + x);
+                    }
+                }, 1000)
+            */
+
+            // Promise 实现
+            // resolve  解决，函数类型的数据（当异步调用成功的时候调用）
+            // reject  拒绝，函数类型的数据（当异步调用失败的时候调用）
+            const p = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    // 获取一个 1 - 100 的随机数
+                    let x = rand(1, 100);
+                    if(x <= 30){
+                        resolve(x); // 调用完后可以将Promise对象的状态设置为【成功】
+                    }else{
+                        reject(x); // 调用完后可以将Promise对象的状态设置为【失败】
+                    }
+                }, 1000)
+            });
+
+            // 调用then方法
+            // 参数中第一个函数是对象成功时的回调，第二个参数是失败时的回调
+            p.then((value)=>{
+                alert("恭喜恭喜, 您的中奖数字为：" + value);
+            }, (reason)=>{
+                alert("再接再厉,您的号码为：" + reason);
+            })
+        });
+    </script>
+</body>
+</html>

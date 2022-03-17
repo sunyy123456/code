@@ -1,0 +1,54 @@
+/*
+  .syy-col-xs-1,.syy-col-xs-2,...,.syy-col-xs-12{
+    float: left;
+  }
+*/
+/*
+  .syy-col-xs-12{
+    width: percentage(12 / 12);
+  }
+  .syy-col-xs-11{
+    width: percentage(11 / 12);
+  }
+  ……
+  .syy-col-xs-1{
+    width: percentage(1 / 12);
+  }
+*/
+/*
+  .syy-col-xs-push-12{
+    left: percentage(12 / 12);
+  }
+  ……
+  .syy-col-xs-push-1{
+    left: percentage(1 / 12);
+  }
+  .syy-col-xs-push-0{
+    left: auto;   // 注意不是0，是auto
+  }
+*/
+/*
+  .syy-col-xs-pull-12{
+    right: percentage(12 / 12);
+  }
+  ……
+  .syy-col-xs-pull-1{
+    right: percentage(1 / 12);
+  }
+  .syy-col-xs-pull-0{
+    right: auto;   // 注意不是0，是auto
+  }
+*/
+/*
+  .syy-col-xs-offset-12{
+    margin-left: percentage(12 / 12);
+  }
+  ……
+  .syy-col-xs-offset-1{
+    margin-left: percentage(1 / 12);
+  }
+  .syy-col-xs-offset-0{
+    margin-left: 0;   
+  }
+*/
+/*# sourceMappingURL=./grid-framework.css.map */

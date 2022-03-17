@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--
+        npm init --yes    初始化
+        
+        安装工具
+            babel-cli
+            babel-preset-env
+            browserify(打包工具，项目中会使用 webpack)
+            1) 在终端输入：npm i babel-cli babel-preset-env browserify -D
+                -D代表开发模式
+            2) 在终端输入：npx babel 原文件目录 -d 转换后存入的文件 --presets=babel-preset-env
+                npx代表局部安装, -d代表存入文件
+            3) 打包   在终端输入：npx browserify 要打包的文件 -o 打包后存放的文件
+    -->
+
+    <script src="./dist/bundle.js"></script>
+</body>
+</html>

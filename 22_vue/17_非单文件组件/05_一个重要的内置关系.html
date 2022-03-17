@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>一个重要的内置关系</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--  
+        1. 一个重要的内置关系：VueComponent.prototype.__proto__ === Vue.prototype
+        2. 为什么要有这样的关系：让组件实例对象（vc）可以访问到 Vue原型上的属性、方法
+    -->
+
+    <div id="root">
+        <school></school>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        
+
+        const school = Vue.extend({
+            template:`
+                <div>
+                    <h2>学校名称：{{name}}</h2>
+                    <h2>学校地址：{{address}}</h2>
+                    <button @click="showX()"> 获取x </button>
+                </div>
+            `,
+            data(){
+                return {
+                    name:"NEAU",
+                    address:"harbin"
+                }
+            },
+            methods: {
+                showX(){
+                    console.log(this.x);  // 这里是可以访问到x（也就是可以访问到Vue原型对象的属性）
+                }
+            },
+        })
+
+        const vm = new Vue({
+            el:"#root",
+            components:{
+                school,
+            }
+        })
+
+        console.log(school.prototype.__proto__ === Vue.prototype);  // true
+
+        Vue.prototype.x = 100;
+    </script>
+</body>
+</html>

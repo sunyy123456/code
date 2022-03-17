@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // 创建symbol
+        let s = Symbol();
+        console.log(s, typeof s);
+
+        let s1 = Symbol('syy');
+        let s2 = Symbol('syy');
+        console.log(s1 === s2); // false
+
+
+        /*
+            Symbol.for(key) 方法会根据给定的键 key，来从运行时的 symbol 注册表中找到对应的 symbol，
+                如果找到了，则返回它，否则，新建一个与该键关联的 symbol，并放入全局 symbol 注册表中。
+
+            和 Symbol() 不同的是，用 Symbol.for() 方法创建的的 symbol 会被放入一个全局 symbol 注册表中。
+                Symbol.for() 并不是每次都会创建一个新的 symbol，它会首先检查给定的 key 是否已经在注册表中了。
+                假如是，则会直接返回上次存储的那个。否则，它会再新建一个。
+
+                所以做全等判断时返回true
+        */
+        let s3 = Symbol.for("111");
+        let s4 = Symbol.for("111");
+        console.log(s3 === s4); // true
+
+        // 不能与其他数据类型进行运算
+        /*
+            let res = s4 + '11';
+            let res = s4 * 2;
+            let res = s4 + s4; 
+            let res = s4 > 2;
+                - 以上均会报错
+        */
+
+        // 调用symbol 的属性和方法不能用.   要用[]
+        // Symbol.isConcatSpreadable等可以作为对象的属性
+        let arr = [1, 2, 4];
+        let arr2 = [5, 7];
+        arr2[Symbol.isConcatSpreadable] = false;  // 数组是否可以展开
+        console.log(arr.concat(arr2));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

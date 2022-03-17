@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 前向断言
+        let str = "Js5211314你知道吗555啦啦啦";
+        // (?=) 前向肯定      (?!=) 前向否定
+        // 正向断言：根据后面的内容来判断前面是否合法
+        // const reg = /\d+(?=啦)/; // 查找后面连着【啦】的一个或多个数字
+        
+        // 反向断言：根据前面的内容来判断后面是否合法
+        // (?<=)
+        const reg = /(?<=吗)\d+/;
+        
+        const result = reg.exec(str);
+        console.log(result);
+    </script>
+</body>
+</html>

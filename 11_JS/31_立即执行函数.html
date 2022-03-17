@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            立即执行函数：
+                - 函数定义完，立即被调用，这种函数叫做立即执行函数
+                - 立即执行函数往往只会执行一次
+        */
+
+        /*
+            function(){
+                ...
+            } 
+            这种函数时匿名函数，没有函数名，直接这么写会报错
+            (
+                funtion(){
+                    .....
+                }
+            )
+            匿名函数前后加括号，就不会报错
+
+            函数调用：函数对象（）;(!!!不要忘记分号)
+
+            所以调用匿名函数只需在后面加个()
+        */
+        (function(){
+            console.log("hello");
+        })();  // 不要忘记分号！！！
+
+        (function(a,b){
+            console.log("a = " + a);
+            console.log("b = " + b);
+        })(1, 2);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

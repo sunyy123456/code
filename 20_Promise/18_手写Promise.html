@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./Promise.js"></script>
+</head>
+<body>
+    <script>
+        let p = new Promise((resolve, reject) => {
+            // setTimeout(()=>{
+                resolve("ok");
+                // reject("err");
+            // }, 2000)
+            // throw "err";
+        });
+
+        const res = p.then(value => {
+            console.log(value);
+            // return new Promise((resolve, reject) => {
+            //     resolve("ok");
+            // })
+            // throw "失败"
+        }, reason => {
+            console.warn(reason);
+            // return new Promise((resolve, reject) => {
+            //     resolve("ok");
+            // })
+        })
+        console.log(res);
+
+        // p.then(value => {
+        //     alert(value);
+        // }, reason => {
+        //     alert(reason);
+        // })
+
+        p.catch(reason => {
+            console.warn(reason);
+        })
+    </script>
+</body>
+</html>

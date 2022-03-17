@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件的嵌套</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+
+    <div id="root">
+        <!-- <app></app> -->
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const hello = {
+            template:`
+                <div>
+                    <h2>{{name}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    name:"您好！！"
+                }
+            }
+        }
+
+        const student = {
+            template:`
+                <div>
+                    <h2>学生姓名：{{name}}</h2>
+                    <h2>学生年龄：{{age}}</h2>
+                </div>
+            `,
+            data(){
+                return {
+                    name:"张三",
+                    age:18
+                }
+            }
+        }
+
+        const school = {
+            template:`
+                <div>
+                    <h2>学校名称：{{name}}</h2>
+                    <h2>学校地址：{{address}}</h2>
+                    <student></student>
+                </div>
+            `,
+            data(){
+                return {
+                    name:"NEAU",
+                    address:"harbin"
+                }
+            },
+            components:{
+                student
+            }
+        }
+
+        const app = {
+            template:`
+                <div>
+                    <hello></hello>
+                    <school></school>
+                </div>`,
+            components:{
+                school,
+                hello
+            }
+        }
+
+        new Vue({
+            el:"#root",
+            template:`
+                <app></app>    
+            `,
+            components:{
+                app
+            }
+        })
+    </script>
+</body>
+</html>

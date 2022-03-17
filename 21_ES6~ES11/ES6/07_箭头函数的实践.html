@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+        }
+    </style>
+
+    <script>
+        window.onload = function(){
+
+            /* 
+                需求1：点击div 2s后变成红色
+            */
+            let ad = document.getElementById('ad');
+            ad.addEventListener("click", function(){
+                /*
+
+                    以前的写法：
+                        其中不能直接修改this.style ，必须先将this存储在_this中，之后通过_this.style修改
+                        因为此时this指向window，window中是没有style属性的
+                        所以需要将外层函数下作用域先保存下来
+                    let _this = this;
+                    setTimeout(function(){
+                        _this.style.backgroundColor = 'red';
+                    }, 2000)
+
+                */
+
+
+                setTimeout(() => {
+                    this.style.backgroundColor = "red";
+                }, 2000);
+            });
+
+            const arr = [1, 2, 3, 4, 5, 6];
+            /*
+                let res = arr.filter(function(item){
+                    if(item % 2 === 0){
+                        return true;
+                    }else{
+                        return false;
+                    }
+                });
+            */
+
+            // filter 筛选
+            let res = arr.filter(item => item % 2 === 0);  
+            console.log(res);
+
+
+
+            /*
+                箭头函数适合与this无关的回调，定时器，数组的方法回调
+                箭头函数不适合于this有关的回调，事件回调，对象的方法
+            */
+        };
+    </script>
+</head>
+<body>
+    
+    <div id="ad"></div>
+</body>
+</html>

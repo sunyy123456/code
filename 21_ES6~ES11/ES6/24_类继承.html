@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Phone{
+            constructor(brand, price){
+                this.brand = brand;
+                this.price = price;
+            }
+
+            call(){
+                console.log("打电话");
+            }
+        }
+
+        // extends 关键字代表继承（跟java一样）
+        class SmartPhone extends Phone{
+            constructor(brand, price, color, size){
+                super(brand, price);  //代表继承父类的 brand 和 price 
+                this.color = color;
+                this.size = size;
+            }
+
+            photo(){
+                console.log("拍照");
+            }
+            playGame(){
+                console.log("玩游戏");
+            }
+        }
+
+        const xiaomi = new SmartPhone("xiaomi", 2999, "black", "5.5inch");
+
+        console.log(xiaomi);
+        xiaomi.call();
+        xiaomi.photo();
+        xiaomi.playGame();
+    </script>
+</body>
+</html>

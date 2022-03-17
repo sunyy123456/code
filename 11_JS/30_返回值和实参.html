@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            与C语言类似
+            return后面的代码不会执行
+            return;   相当于 return undefined；
+            如果函数中不写return，也相当于返回undefined
+            return后可以跟任何类型的值
+
+        */
+
+        function sum(a, b, c){
+            return a + b + c;
+        }
+        var result = sum(1, 2, 3);
+        console.log("result = " + result); //result = 6
+
+
+        /*
+            实参可以是任何的数据类型，也可以是一个对象
+                当我们参数过多时，可以将参数封装到一个对象中，然后通过对象传递
+        */
+
+        function sayhello(o){
+            console.log("姓名：" + o.name + "  年龄：" + o.age + "   性别:" + o.gender);
+        }
+
+        var obj = {
+            name:"孙悟空",
+            gender:"男",
+            age:18
+        }
+        sayhello(obj);
+
+        /*
+            实参可以是一个对象，也可以是一个函数
+        */
+        function fun(a){
+            a(obj);
+        }
+        fun(sayhello);
+
+        function fun2(a){
+            console.log("a = " + a);
+        }
+        fun2(function(){alert("hello");});
+        
+        /*
+            a()
+                - 调用函数
+                - 相当于使用的函数的返回值
+
+            a
+                - 函数对象
+                - 相当于直接使用函数对象
+        */
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

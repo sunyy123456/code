@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            ES6 引入rest参数，用于获取函数的实参，用来代替arguments
+        */
+
+        /*
+            ES6 获取实参方式：arguments  返回的是对象
+            function f(){
+                console.log(arguments);
+            }
+            f(1, 2, 3);
+        */
+
+        /*
+            rest 参数
+            用【...】 + 【参数名】表示
+        */
+        function f(...arg){  // 返回的是数组
+            console.log(arg);
+        }
+        f(1, 2, 3);
+
+        // rest参数一定要放在参数最后
+        function fn(a, b, ...args){
+            console.log(a);
+            console.log(b);
+            console.log(args);
+        }
+        fn(1, 2, 3, 4, 5);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

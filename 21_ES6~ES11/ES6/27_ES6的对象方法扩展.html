@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. Object.is 判断两个值是否完全相等
+        // 跟 === 类似，特例是NaN
+        console.log(Object.is(120, 120));  // true
+        console.log(Object.is("120", 120));  // false
+
+        console.log(Object.is(NaN, NaN));  // true
+        console.log(NaN === NaN);  // false
+        console.log(NaN == NaN);  // false
+
+        // 2. Object.assign(a, b)  对象的合并，也就是b会把a当中与之重名的属性覆盖掉
+        const obj1 = {
+            name: "name",
+            age:18,
+            gender:"male",
+            class:"1903"
+        }
+        const obj2 = {
+            name: "syy",
+            age: 20,
+            gender:"female",
+            school:"NEAU"
+        }
+        console.log(Object.assign(obj1, obj2));
+
+        // 3. Object.setPrototypeOf(a, b)  设置原型对象   将b设置成a的原型对象(不建议使用)
+        // Object.getPrototypeOf(a)     获取a的原型对象
+        const school = {
+            name: "NEAU"
+        }
+        const city = {
+            name: "harbin"
+        }
+        Object.setPrototypeOf(school, city);
+        console.log(school);
+
+        console.log(Object.getPrototypeOf(school));
+
+
+
+
+    </script>
+</body>
+</html>

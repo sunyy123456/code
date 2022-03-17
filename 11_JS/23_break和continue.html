@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            break关键字可以用来退出switch和循环语句
+            不能在if语句中使用break和continue
+            break会立即终止离它最近的那个循环结构
+        */
+
+        /*
+            可以为循环结构创建一个label，来表示当前的循环
+            label：循环语句
+            使用break语句时，可以在break后跟着一个label
+                这样break就会终止指定的循环，而不是最近的
+        */
+
+        outer:
+        for(var i = 0; i < 5; i++){
+            console.log("外层循环" + i);
+            for(var j = 0; j < 5; j++){
+                break outer;  //终止外层循环outer
+                console.log("内层循环" + j);
+            }
+        }
+
+        /*
+            contiue关键字可以跳过当次循环
+                同样continue也是默认只会对离他最近的循环起作用
+            使用continue语句时，可以在continue后跟着一个label
+                这样continue就会跳过指定的循环，而不是最近的
+        */
+
+        /*
+            console.time("计时器的名字")可以用来开启一个计时器
+            它需要一个字符串作为参数，这个字符串将会作为计时器的标识
+        */
+        console.time("test");
+        for(var i = 2; i <= 100; i++){
+            var flag = true;
+
+            // 可以通过Math.sqrt()对一个数进行开方
+            for(var j = 2; j <= Math.sqrt(i); j++){
+                if(i % j == 0){
+                    flag = false;
+                    break;
+                }
+            }
+            if(flag){
+                console.log(i);
+            }
+        }
+        // 终止计时器
+        // console.timeEnd() 用来停止一个计时器，需要一个计时器的名字作为参数
+        console.timeEnd("test");
+
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

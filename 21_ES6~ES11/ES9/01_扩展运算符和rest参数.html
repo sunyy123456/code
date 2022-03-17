@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            rest 参数与 spread 扩展运算符在ES6中已经引入，只不过ES6中只针对数组，
+            在ES9中为对象提供了像数组一样的rest参数和扩展运算符
+        */
+        function connect({host, port, ...user}){
+            console.log(host);
+            console.log(port);
+            console.log(user);
+        }
+
+        // 相当于把后面的几个参数都存入到user中，user是一个对象
+        connect({
+            host:"127.0.0.1",
+            port: 3306,
+            username: "localhost",
+            password: "root",
+            type: "master"
+        })
+
+
+        // 扩展运算符，与ES6中操作数组是一样的
+        const one = {
+            name1:"唐僧"
+            // name:"唐僧"
+        };
+        const two = {
+            name2:"孙悟空"
+            // name:"孙悟空"
+        };
+        const three = {
+            name3:"猪八戒"
+            // name:"猪八戒"
+        };
+        const four = {
+            name4:"沙僧"
+            // name:"沙僧"
+        };
+
+        const xiyouji = {...one, ...two, ...three, ...four};
+        console.log(xiyouji); 
+
+        // 注意，如果将所有的名字都定义为name，那么使用扩展运算符后，name就会被覆盖，最后就只会显示name：沙僧
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>人员列表</h2>
+        <input type="text" placeholder="请输入名字" v-model="keyWord">
+        <ul>
+            <li v-for="(p, index) in filPersons" :key="p.id">
+                {{p.name}}-{{p.age}}-{{p.gender}}
+            </li>
+        </ul>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        new Vue({
+            el:"#root",
+            data:{
+                keyWord:"",
+                persons:[
+                    {id:"001", name:"马冬梅", age:19, gender:"女"},
+                    {id:"002", name:"周冬雨", age:20, gender:"女"},
+                    {id:"003", name:"周杰伦", age:22, gender:"男"},
+                    {id:"004", name:"温兆伦", age:29, gender:"男"}
+                ],
+                // filPersons:[]
+            },
+            // 用watch实现
+            // watch:{
+            //     keyWord:{
+            //         //如果没有立即执行（意味着最开始keywWord是没有改变的），则最开始就没有显示出人员列表
+            //         immediate:true,  
+            //         // 立即执行开启后，第一次keyWord的变化是：以前的值是undefined，现在的值是“”
+            //         handler(val){
+            //             // indexOf() 方法返回调用它的 String 对象中第一次出现的指定值的索引，从 fromIndex 处进行搜索。如果未找到该值，则返回 -1。
+            //             this.filPersons = this.persons.filter((p)=>{
+            //                 return p.name.indexOf(val) !== -1;
+            //             })
+            //         }
+            //     }
+            // },
+            
+            // 用computed实现
+            computed:{
+                // 注意使用computed时,data中不能有filPersons
+                filPersons(){
+                    return this.persons.filter((p)=>{
+                        return p.name.indexOf(this.keyWord) !== -1;
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+</html>

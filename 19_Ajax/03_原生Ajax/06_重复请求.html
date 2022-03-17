@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        需求： 
+            当点击按钮后，向服务端发送请求
+            如果发送相同的请求，会把之前的请求取消
+
+        （试了谷歌 火狐，发现是如果有重复的请求，就会自动忽略后面来的相同请求，只执行第一个请求，直到第一个请求完成）
+    -->
+    <button>发送请求</button>
+
+    <script>
+        const btns = document.querySelectorAll("button");
+        let xhr;
+        // 标识变量
+        let isSending = false; // isSending表示 是否正在发送AJAX请求
+        btns[0].onclick = function(){
+            // 判断标识变量
+            if(isSending) x.abort(); // 如果正在发送，则取消请求
+            xhr = new XMLHttpRequest();
+            // 修改标识变量的值
+            isSending = true;
+            xhr.open("GET","http://127.0.0.1:8000/delay");
+            xhr.send();
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState === 4){
+                    // 注意这里不用判断状态码，因为不只是在成功的时候才取消重复请求
+                    isSending = false;
+                }
+            };
+        }
+
+
+    </script>
+</body>
+</html>

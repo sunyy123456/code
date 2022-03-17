@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            margin: 0 auto;
+            /* 
+                变形就是指通过CSS来改变元素的形状或位置 
+                    - 变形不会影响到页面的布局
+                transform 用来设置元素的变形效果    
+                    - 平移：
+                        - translateX()  沿着x轴方向平移  正值向右移，负值向左移
+                        - translateY()  沿着y轴方向平移  正值向下移，负值向上移
+                        - translateZ()  沿着z轴方向平移  
+                            - 平移元素时，百分比是相对于自身计算的
+                注意：一般一个元素里只有一个transform，因为下面的会把之前的覆盖掉
+                    多个之间用空格隔开
+            */
+            transform: translateX(100%);
+            /* transform: translateY(100px); */
+
+        }
+
+
+        .box2{
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            margin: 0 auto;
+            margin-top: 200px;
+        }
+
+        .box3{
+            background-color: red;
+            position: absolute;
+            /* 
+                这种居中方式只适用于大小确定的元素
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    margin: auto; 
+
+            
+
+            */
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .box4, .box5{
+            float: left;
+            width: 220px;
+            height: 300px;
+            background-color: #fff;
+            margin: 0 10px;
+            transition:all 0.3s
+        }
+
+        .box4:hover ,.box5:hover{
+            transform: translateY(-4px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+        }
+
+
+    </style>
+</head>
+<body style="background-color:silver">
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3">ll</div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+</body>
+</html>

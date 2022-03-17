@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: #bfa;
+            transition: 2s;
+            margin: 100px auto;
+
+            /* 变形的原点   默认值时center*/
+            transform-origin: center;
+        }
+
+        .box1:hover{
+            /* 
+                对元素进行缩放：
+                scaleX()   x轴方向  
+                scaleY()   y轴方向
+                scale  双方向
+                    - 填数值  代表缩放几倍；>=1 的即为放大；<1 的即为缩小
+
+            */
+            transform: scale(2);
+        }
+
+        .img-wrapper{
+            margin: 200px auto;
+            height: 200px;
+            width: 200px;
+            border: 1px solid red;
+            overflow: hidden;
+        }
+        
+        img{
+            transition: 0.5s;
+
+        }
+        .img-wrapper:hover img{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"> </div>
+    <div class="img-wrapper">
+        <img src="../exercise/img/14/1.jpg" width="100%" >
+    </div>
+</body>
+</html>

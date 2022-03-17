@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const p = new Promise((resolve, reject) => {
+            /*
+                excutor执行器
+                    - (resolve, reject) => {}   
+                    - excutor执行器会在 Promise 内部立即同步调用，异步操作在执行器中执行
+            */
+
+            // console.log(1);  //先输出
+
+            // 修改Promise对象的状态
+            // reject("error"); 
+        })
+        console.log(2);
+
+        // then 指定成功和失败的回调，并且返回一个新的Promise对象
+        // catch  指定失败的回调
+        p.catch(reason => {
+            console.log(reason);
+        })
+
+        /*
+            then 方法是异步执行的,也就是说得等所有的同步执行完成后,才会异步执行(then)
+
+            let p1 = new Promise((resolve, reject) => {
+                resolve("ok");
+                console.log(111);
+            })
+            p1.then(value => {
+                console.log(222);
+            })
+    
+            console.log(333);
+
+                - 结果是    111
+                            333
+                            222
+        */
+        
+    </script>
+
+</body>
+</html>

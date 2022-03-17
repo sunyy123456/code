@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // // Phone 属于函数对象（构造函数对象）
+        // function Phone(){
+
+        // }
+
+        // // 属于函数对象而不属于实例对象的，成为静态成员（name就是静态成员）
+        // Phone.name = "手机";
+
+        // Phone.prototype.size = "5.5inch";
+        
+        // // xiaomi 属于实例对象
+        // // 函数对象与实例对象属性是不通的，实例对象与函数对象的原型是相通的
+        // let xiaomi = new Phone();
+
+        // // console.log(xiaomi.name)  // 是访问不到的
+        // console.log(xiaomi.size);  // 可以访问到
+
+        class Phone{
+            // 静态属性
+            static name = 'shouji';
+            static change(){
+                console.log("改变世界");
+            }
+        }
+
+        let xiaomi = new Phone();
+        console.log(xiaomi.name);  // undefined  访问不到静态成员
+    </script>
+</body>
+</html>

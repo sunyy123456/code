@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        1. less的继承
+            #test{   // 推荐使用这种写法
+                &:extend(.father)
+            }
+            #test:extend(.father){
+
+            }
+            - 继承实质上是将.father选择器和#test组合成一个选择器，
+                声明块使用.father的
+            - all:继承所有和.father相关的声明块
+            - 切记父类不能定义成混合
+            - 继承不灵活但性能高，混合灵活但性能低
+
+        2. less的避免编译
+            ~"不会被编译的内容"
+            变量在less中属于块级作用域，延迟加载
+
+        3. bootstrap栅格系统和源码分析
+            液体容器
+                width:auto
+                两侧15px的padding
+            固定容器
+                阈值
+                    xs(< 768px)      width: auto
+                    sm(>= 768px)     width: 720 + 槽宽
+                    md(>= 992px)     width: 940 + 槽宽
+                    lg(>= 1200px)    width: 1140 + 槽宽
+                两侧15px的padding
+            行
+                两侧-15px的margin
+            列
+                公共样式
+                    两侧有15px的padding
+                    相对定位
+                float
+                width
+                    1~12
+                left
+                    0~12
+                    0：auto
+                right
+                    0~12
+                    0：auto
+                margin-left
+                    0~12
+        
+        4. 列排序
+            注意阈值上样式的设置不能跳跃
+    -->
+</body>
+</html>

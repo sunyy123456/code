@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 
+            [属性名]选择含有指定属性的元素
+            [属性名 = 属性值]选择含有指定属性和属性值的元素
+            [属性名 ^= 属性值]选择属性以指定值开头的元素
+            [属性名 $= 属性值]选择属性以指定值结尾的元素
+            [属性名 *= 属性值]选择属性值中含有指定值的元素
+        */
+        /* p[title] */
+        /* p[title = abc] */
+        /* p[title ^= abc] */
+        /* p[title $= abc] */
+        p[title *= abc]{
+            color:rgb(247, 4, 65);
+        }
+    </style>
+</head>
+<body>
+    <!-- title：当鼠标光标移动到元素时，会提示title的值 -->
+    <p title = "abc">床前明月光</p>
+    <p title = "abcdabc">疑是地上霜</p>
+    <p tltle = "gggabcde">举头望明月</p>
+    <p>低头思故乡</p>
+    <p>白毛浮绿水</p>
+    <p>红掌拨清波</p>
+
+</body>
+</html>

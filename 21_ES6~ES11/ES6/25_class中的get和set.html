@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Phone{
+            get price(){
+                console.log("获取价格");
+                return 2999;
+            }
+
+            set price(setValue){
+                console.log("修改价格");
+            }
+
+            // 注意get 和 set 里千万不要写return this.xxx 或 this.xxx = ，否则会出现递归
+        }
+
+        const xiaomi = new Phone();
+        
+        console.log(xiaomi.price);  // 使用了get属性，get中return什么就等于什么
+        xiaomi.price = 2599;
+    </script>
+</body>
+</html>

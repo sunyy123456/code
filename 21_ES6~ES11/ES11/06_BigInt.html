@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 大整型  在数值后面加个n即可
+        let n = 123n;
+        console.log(n, typeof n);  // 123n "bigint"
+
+        // 函数
+        let x = 13;
+        console.log(BigInt(x), typeof BigInt(x)); // 13n "bigint"
+        // 注意不能使用浮点型
+        // console.log(BigInt(1.2));  // 报错
+
+        // BigInt类型的不能与其他类型进行运算
+        // console.log(BigInt(11) + 1);  // 报错
+        console.log(BigInt(11) + BigInt(1)); // 12n
+
+        // 大数值运算
+        let max = Number.MAX_SAFE_INTEGER;
+        console.log(max);
+        console.log(max + 1);
+        console.log(max + 2); //计算是错误的
+
+
+        console.log(BigInt(max));
+        console.log(BigInt(max) + BigInt(1));
+        console.log(BigInt(max) + BigInt(2));
+    </script>
+</body>
+</html>

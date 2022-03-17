@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        块元素（block element）
+            在网页中一般通过块元素对页面进行布局
+        行内元素
+            行内元素主要用来包裹文字
+
+            一般情况写，会在块元素中放行内元素，而不会在行内元素中放块元素
+            块元素基本什么都能放    特例：p元素中不能放任何的块元素
+
+        浏览器在解析网页时，会自动对网页中不符合规范的内容进行修正
+            比如：
+                    标签写在根元素的外部
+                    p标签内嵌套了块元素
+                    根元素中出现了除head和body以外的子元素
+        
+        布局标签（结构化语义标签）
+            header 表示网页头部
+            main 表示网页主体（一个网只有一个）
+            footer 表示网页底部
+            nav 表示网页中的导航
+            aside 表示和主体相关的其他内容（侧边栏）
+            article 表示一个独立的文章
+            section 表示一个独立的区块（上边的标签都不能表示时使用section）
+            （这七个标签是html5新增的，所以不要求必须掌握）
+
+            div 没有语义，就表示一个区块，目前来讲div是主要的布局元素（div可以代替上面的所有）
+            span 行内元素，没有任何语义，一般用于在网页中选择文字
+            （常用的就是div和span）
+    -->
+
+    <header>aa</header>
+    <main>bb</main>
+    <footer>cc</footer>
+    <nav>dd</nav>
+    <aside>ee</aside>
+    <article>ff</article>
+    <section>gg</section>
+
+    <div>hh</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html{
+            perspective: 800px;
+        }
+        .box1{
+            height: 200px;
+            width: 200px;
+            background-color: #bfa;
+            margin: 200px auto;
+
+            transition: 2s;
+        }
+
+        img{
+            height: 200px;
+            width: 200px;
+        }
+
+        /*  
+            旋转：通过旋转可以使元素沿着x y 或 z 轴宣战指定的角度
+                transform: 
+                    rotateX()
+                    rotateY()
+                    rotateZ()
+
+            backface-visibility 设置是否显示元素背面
+                visible  默认值  显示背面
+                hidden  不显示背面
+            backface-visibility: hidden;
+        */
+
+        body:hover .box1{
+            /* transform: rotateZ(45deg); */
+            /* transform: rotateZ(1turn); */
+            /* transform: rotateX(45deg); */
+            /* transform: rotateY(45deg) translateZ(400px); */
+            /* transform: translateZ(400px) rotateY(45deg) ; */
+            transform: rotateY(180deg);
+
+            backface-visibility: visible;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <img src="../xiaomi/img/favicon.ico">
+    </div>
+</body>
+</html>

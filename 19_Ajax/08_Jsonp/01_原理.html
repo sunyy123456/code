@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 200px;
+            border: 1px red solid;
+        }
+    </style>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        function handle(data){
+            const res = document.getElementById("result");
+            res.innerHTML = data.name;
+        }
+    </script>
+    <!--  
+        当前html文件用本地打开，显示的是file协议
+        而调用的server用的是http协议
+        所以属于跨域访问
+    -->
+    <!--  
+        注意这里是script标签，所以发出请求后需要返回的是js代码
+        比如若想输出 Hello，不能写 response.send("Hello");
+            而是得写完整的js代码：response.send("console.log('Hello');");
+    -->
+    <script src="http://127.0.0.1:8000/jsonp-server"></script>
+</body>
+</html>

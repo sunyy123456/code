@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            练习1:
+                作用域是静态的，不会放在其他函数里执行而改变作用域的位置
+        */
+        var x = 10;
+        function fn(){
+            console.log(x);
+        }
+        function show(f){
+            var x = 20;
+            f();
+        }
+        show(fn);  // 10 （注意不是100）
+
+
+        /*
+            练习2：
+                读取对象中的的属性，必须是对象名.属性名，所以必须加this
+        */
+        var fn2 = function(){
+            console.log(fn2);
+        }
+        fn2();
+
+        var obj = {
+            fn3:function(){
+                console.log(fn3);  // 报错  fn3 is not defined
+                // console.log(this.fn3);  // 若想访问fn3，必须使用this.fn3
+            }
+        }
+        obj.fn3();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

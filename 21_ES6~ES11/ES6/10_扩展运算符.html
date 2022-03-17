@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        /*
+            扩展运算符（...）能将数组转换为逗号分隔的参数序列
+        */
+        const arr = [1, 2, 3, 4];
+
+        function f(){
+            console.log(arguments);
+        }
+        f(arr); // 返回一个参数[1, 2, 3, 4]
+        f(...arr); // 返回四个参数 1, 2, 3, 4
+
+
+
+        // 1. 数组的合并
+        const arr1 = [1, 2, 3];
+        const arr2 = [4, 5, 6];
+        // const arr3 = arr1.concat(arr2);
+        const arr3 = [...arr1, ...arr2];
+        console.log(arr3);
+
+        // 2. 数组的克隆
+        /*
+            注意是浅拷贝
+                浅拷贝：只复制指向某个对象的指针（即地址），而不是复制对象本身
+                    实则指向的是同一块堆空间，被复制的对象中的值发生变化时，复制的对象也会随之改变
+                深拷贝：把被复制对象的堆内存的东西复制一份，然后在堆内存中开辟一个新空间存放复制的东西
+                    实则指向的不是同一堆空间，两者互不影响
+        */
+        const arr4 = [...arr1];
+        console.log(arr4);
+        
+
+        // 3. 将伪数组转换为真正的数组
+        const div = document.querySelectorAll("div");  // 返回一个伪数组
+        const divArr = [...div];
+        console.log(divArr);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

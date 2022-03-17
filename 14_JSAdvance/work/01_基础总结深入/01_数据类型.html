@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            数据类型:
+
+            1. 分类
+                - 基本类型(值类型)
+                    String: 任意字符串
+                    Number: 任意的数字
+                    Boolean: true/false
+                    Undefined: undefined
+                    Null: null
+                - 对象类型(引用类型)
+                    Object: 任意对象
+                    Function: 一种特别的对象(可以执行)
+                    Array: 一种特别的对象(数值下标; 内部数据是有序的)
+            2. 判断
+                typeof
+                    可以判断: undefined / number / boolean / string / function
+                    不能判断: null 和 object,  object 和 array
+                instanceof  
+                    专门用来判断对象的具体类型：Object、Array、Function
+
+                ===
+                    可以判断: undefined / null
+        
+        */
+        var a;
+        // typeof 返回数据类型的字符串表达
+        console.log(a, typeof a, typeof a === "undefined", a === undefined);  // undefined "undefined" true true
+        a = null;
+        console.log(typeof a, a === null);  // 'object' true
+
+
+        var b1 = {
+            b2: [1, "abc", console.log],
+            b3: function(){
+                console.log("b3");
+                return function(){
+                    return "syy";
+                }
+            }
+        };
+        // A instanceof B  A是B的实例  B是构造函数类型(能够new的就是构造函数类型)
+        console.log(b1 instanceof Object);  // true
+        console.log(b1.b2 instanceof Array, b1.b2 instanceof Object);  // true true
+        console.log(b1.b3 instanceof Function, b1.b3 instanceof Object);  // true true
+
+        console.log(typeof b1.b2);  // 'object';
+
+        console.log(typeof b1.b3 === "function");  // true
+
+        console.log(typeof b1.b2[2] === "function");  // true
+        // 只要是函数,就可以执行,加()即可执行
+        b1.b2[2](3);
+        console.log(b1.b3()());
+
+
+        /*
+            实例: 实例对象
+            类型: 类型对象
+
+            
+        */
+        function Person(name, age){  // 构造函数  类型
+            this.name = name;
+            this.age = age;
+        }
+        // 当new的时候就是构造函数
+        var p = new Person("syy", 18);  // 根据类型(上面的Person)创建的实例对象
+        // Person("s", 18);  // 当这样调用时就不是构造函数里,不建议这样调用
+
+
+        /*
+            1. undefined 与 null 的区别 ?
+                - undefined 表示定义未赋值
+                - null 表示定义并赋了值,只是值为null
+
+            2. 什么时候给变量赋值为null ?
+                - 初始赋值,表明将要赋值对象
+                - 结束前,让对象称为垃圾对象(被垃圾回收器回收)
+
+            3. 严格区分变量类型与数据类型 ?
+                - 数据的类型
+                    - 基本类型
+                    - 对象类型
+                
+                - 变量的类型(变量内存值的类型)
+                    - 基本类型: 保存的是基本类型数据
+                    - 引用类型: 保存的是地址值
+
+        */
+
+        var o;
+        console.log(o); // undefined
+        o = null;
+        console.log(o);  // null
+
+        var c = null; // 初始赋值为null, 表明将要赋值为对象
+        c = ["hello", 122];
+        c = null; // 让c指向的对象称为垃圾对象(被垃圾回收器回收)
+
+    </script>
+</head>
+<body>
+    
+
+</body>
+</html>

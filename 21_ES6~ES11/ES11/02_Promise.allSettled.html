@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Promise.allSettled() 
+                - 传递一个数组
+                - 返回一个Promise，状态为resolved，且结果为数组，里面是传递的每一个Promise的状态和结果
+                - 状态一定会返回resolved，即使传递参数的Promise都是失败的
+        */
+        const p1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve("成功！！");
+                reject("err");
+            }, 1000);
+        })
+        const p2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                // resolve("成功！！");
+                reject("err");
+            }, 1000);
+        })
+        const res = Promise.allSettled([p1, p2]);
+        console.log(res);
+    </script>
+</body>
+</html>

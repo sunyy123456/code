@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/bootstrap.css">
+    <style>
+        .container-fluid{
+            background-color: #bfa;
+        }
+        .container{
+            background-color: red;
+        }
+        div[class |= "col"]{
+            border: 1px solid;
+        }
+    </style>
+</head>
+<body>
+    <!--  
+        容器：
+            1. 流体容器
+            2. 固定容器
+                阈值： 1200,992, 768
+                    >=1200（lg  大屏pc）              width为1170 （1140+槽宽）
+                    [992, 1200) （md  中屏pc）        width为970 （940+槽宽）
+                    [768, 992) （sm  平板）           width为750 （720+槽宽）
+                    <768 （xs 移动手机）              width为 auto
+            3. 栅格系统
+                - 液体容器和固定容器的公共样式
+                    padding-right: 15px;
+                    padding-left: 15px;
+                    margin-right: auto;
+                    margin-left: auto;
+                - 固定容器  特定样式
+                    （顺序不可变！！！）
+                    @media (min-width: @screen-sm-min) {
+                        width: @container-sm;
+                    }
+                    @media (min-width: @screen-md-min) {
+                        width: @container-md;
+                    }
+                    @media (min-width: @screen-lg-min) {
+                        width: @container-lg;
+                    }
+                - 行
+                    margin-right: -15px;
+                    margin-left: -15px;
+                - 列
+                    make-grid-columns():
+                        .col-xs-1, .col-sm-1, .col-md-1, .col-lg-1,
+                        .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2,
+                        ……
+                        .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12{
+                            position: relative;
+                            min-height: 1px;
+                            padding-right: 15px;
+                            padding-left: 15px;
+                        }
+
+                    make-grid():
+                        .float-grid-columns(@class);   // 设置浮动
+                            .col-xs-1,.col-xs-2,...,.col-xs-12{
+                                float: left;
+                            }
+                        .loop-grid-columns(@grid-columns, @class, width); // 设置宽度
+                            .col-xs-12{
+                                width: percentage(12 / 12);
+                            }
+                            .col-xs-11{
+                                width: percentage(11 / 12);
+                            }
+                            ……
+                            .col-xs-1{
+                                width: percentage(1 / 12);
+                            }
+                        .loop-grid-columns(@grid-columns, @class, pull);  // 设置列排序
+                            .col-xs-push-12{
+                                left: percentage(12 / 12);
+                            }
+                            ……
+                            .col-xs-push-1{
+                                left: percentage(1 / 12);
+                            }
+                            .col-xs-push-0{
+                                left: auto;   // 注意不是0，是auto
+                            }
+                        .loop-grid-columns(@grid-columns, @class, push);  // 设置列排序
+                            /*
+                            .col-xs-pull-12{
+                                right: percentage(12 / 12);
+                            }
+                            ……
+                            .col-xs-pull-1{
+                                right: percentage(1 / 12);
+                            }
+                            .col-xs-pull-0{
+                                right: auto;   // 注意不是0，是auto
+                            }
+                            */
+                        .loop-grid-columns(@grid-columns, @class, offset);  // 设置列偏移
+                            /*
+                            .col-xs-offset-12{
+                                margin-left: percentage(12 / 12);
+                            }
+                            ……
+                            .col-xs-offset-1{
+                                margin-left: percentage(1 / 12);
+                            }
+                            .col-xs-offset-0{
+                                margin-left: 0;
+                            }
+                            */
+
+
+
+            
+    -->
+
+
+    <!-- 流体容器：网页缩小和放大时网页布局会随着浏览器的大小而改变 -->
+    <div class="container-fluid">流体容器</div>
+    <!-- 固定容器 -->
+    <div class="container">固定容器</div>
+
+    <div class="container">
+        <div class="row">
+            <!-- 默认是12列 -->
+            <div class="col-lg-6">col-lg-6</div>
+            <div class="col-lg-6">col-lg-6</div>
+        </div>
+        <div class="row">
+            <!-- 默认是12列 -->
+            <div class="col-lg-4">col-lg-4</div>
+            <div class="col-lg-8">col-lg-8</div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <!-- 注意：当浏览器宽度>=1200，属于大屏，则按照6、6分 -->
+            <!-- 当浏览器宽度处于[992, 1200)时，属于中屏，则按照11、1分 -->
+            <!-- 注意的是源码中的顺序  以及源码中主要使用的是递归 -->
+            <div class="col-lg-6  col-md-11">col-lg-6</div>
+            <div class="col-lg-6  col-md-1">col-lg-6</div>
+        </div>
+    </div>
+
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        function fun(){
+            name="fun";
+            console.log(this.name);
+        }
+
+        // fun();
+        
+        /*
+            call() 和 apply()
+                - 这俩方法都是函数对象的方法，需要通过函数对象来调用
+                - 当对函数调用call()和apply()都会调用函数执行
+                - 在调用call和apply可以将一个对象指定为第一个参数
+                    此时这个对象将会成为函数执行的this
+                - call()方法可以将实参在对象之后传递
+                - apply()方法需要将实参封装到一个数组中统一传递
+
+            回顾：this的情况：
+                1. 以函数形式调用时，this永远是window
+                2. 以方法形式调用时，this是调用方法的对象
+                3. 以构造函数形式调用时，this是新创建的对象
+                4. 使用call 和 apply调用时，this是规定的那个
+        */
+        fun.call();
+        fun.apply();
+
+        var obj = {name:"obj"};
+        var obj2 = {name:"obj2"};
+        fun.apply(obj);  // obj
+        fun.apply(obj2);  // obj2
+
+        function fun2(a, b){
+            console.log("a = " + a);
+            console.log("b = " + b);
+        }
+
+        fun2.call(obj, 2, 3);
+        // fun2.apply(obj, 2, 3); // 报错
+        fun2.apply(obj, [2, 3]);
+
+        /*
+            在调用函数时，浏览器每次都会传递两个隐含的参数：
+            1. 函数的上下文对象  this
+            2. 封装实参的对象  arguments
+
+            arguments
+                - arguments是一个类数组对象，也可以通过索引来操作数据，也可以获取长度
+                - 在调用函数时，我们所传递的实参都会在arguments保存
+                - arguments.length可以获取实参的个数
+                - 即使不定义形参，也可以通过arguments来使用实参，只不过比较麻烦
+                    arguments[0]  表示第一个实参
+                    arguments[1]  表示第二个实参
+                - arguments有一个属性callee
+                    这个属性对应一个函数对象，就是当前正在执行的函数的对象
+
+        */
+        
+        function fun3(){
+            // 判断是不是数组(两种方法)
+            // console.log(arguments instanceof Array);  // false
+            // console.log(Array.isArray(arguments));  // false
+            console.log(arguments.length); // 长度是实参的个数
+            console.log(arguments.callee); 
+            console.log(arguments.callee == fun3);  // true
+        }
+        fun3("a", "b");
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

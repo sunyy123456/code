@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+            1. 内存溢出：
+                一种程序运行出现的错误
+                当程序运行需要的内存超过了剩余的内存时，就出抛出内存溢出的错误
+
+            2. 内存泄漏：
+                占用的内存没有及时释放
+                内存泄露积累多了就容易导致内存溢出
+                常见的内存泄漏：    
+                    意外的全局变量
+                    没有及时清理的计时器或回调函数
+                    闭包
+        */
+
+        // 1. 内存溢出
+        /*
+            var obj = {};   
+            for(var i = 0; i < 10000; i++){
+                obj[i] = new Array(1000000);  // obj[i] 相当于伪数组
+                console.log("======="); 
+            }
+
+            这个代码会造成内存溢出，程序不能运行，浏览器加载不出来
+        */
+
+
+        // 意外的全局变量
+        function f(){
+            a = 3;  // 相当于 window.a = 3（全局变量）
+            console.log(a);
+        }
+        f();
+        console.log(a);
+
+
+        // 没有及时清理计时器
+        var intervalId = setInterval(function(){
+            console.log("---");
+        }, 3000)
+        // clearInterval(intervalId);
+
+        // 闭包
+        function f1(){
+            var a = 1;
+            function f2(){
+                a++;
+                console.log(a);
+            }
+            return f2;
+        }
+        var fn = f1();
+        fn();
+
+        // f = null;
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
