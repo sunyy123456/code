@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #wrapper{
+            background-color: #bfa;
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+            /* position: relative; */
+        }
+        h2{
+            width: 150px;
+            margin: 0 auto;
+            /* float: right; */
+        }
+        #box{
+            background-color: #fff;
+            width: 350px;
+            height: 250px;
+            margin: 10px auto;
+        }
+        #box #search{
+            width: 92%;
+            margin: 10px 10px;
+        }
+        #box #list{
+            margin: 0 10px;
+        }
+        #box #res{
+            margin: 20px 10px;
+        }
+        .item{
+            position: relative;
+        }
+        /* .visible{
+            padding: 5px 0px;
+        } */
+        .invisible{
+            display: none;
+        }
+        .item:hover{
+            background-color: rgb(204, 188, 188);
+        }
+        
+        #res input{
+            margin-right: 20px;
+        }
+        .item button{
+            /* right: 1100px; */
+            float:right;
+            background-color: red;
+            color: #fff;
+        }
+        input{
+            padding:0 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <h2>Todo-List</h2>
+        <div id="box">
+            <input type="text" id="search">
+            <ul id="list">
+                <li class="item">
+                    <input type="checkbox" name="todo">
+                    <span>打代码</span>
+                    <button class="delete" style="opacity: 0;">delete</button>
+                </li> 
+                <li class="item">
+                    <input type="checkbox" name="todo">
+                    <span>睡觉</span>
+                    <button class="delete" style="opacity: 0;">delete</button>
+                </li> 
+            </ul>
+            <div id="res">
+                <input type="checkbox" id="allChecked">已完成<span id="did">0</span> /  全部<span id="all">2</span>
+            </div>
+        </div>
+    </div>
+    
+    
+    <script>
+        const search = document.getElementById("search");
+        let item = document.getElementsByClassName("item");
+        search.addEventListener("input", changeItemList, false);
+        search.addEventListener("keydown", addItem, false);
+
+        let successCount = 0;
+        let allCount = 2;
+        let did = document.getElementById("did");
+        let all = document.getElementById("all");
+        let allChecked = document.getElementById("allChecked");
+
+        allChecked.addEventListener("click", function(){
+            if(this.checked == true){
+                for(let i = 0; i < item.length; i++){
+                    if(item[i].children[0].checked == true) continue;
+                    item[i].children[0].checked = true;
+                    successCount++;
+                    did.innerText = successCount;
+                }
+            }
+            else{
+                for(let i = 0; i < item.length; i++){
+                    if(item[i].children[0].checked == false) continue;
+                    item[i].children[0].checked = false;
+                    successCount--;
+                    did.innerText = successCount;
+                }
+            }
+        }, false);
+
+        function addClass(obj, cn){
+            if(!hasClass(obj, cn)){
+                obj.className += " " + cn;
+            }
+        }
+        function hasClass(obj, cn){
+            let reg = new RegExp("\\b" + cn + "\\b");
+            console.log( obj.className);
+            return reg.test(obj.className);
+        }
+        function removeClass(obj, cn){
+            let reg = new RegExp("\\b" + cn + "\\b");
+            obj.className = obj.className.replace(reg, "");
+        }
+
+
+        for(let i = 0; i < item.length; i++){
+            item[i].addEventListener("mouseover", showDelete, false);    
+            item[i].addEventListener("mouseout", unshowDelete, false); 
+            item[i].children[0].addEventListener("input", dothis, false);
+            item[i].lastElementChild.addEventListener("click", deleteList, false);
+        }
+
+        function dothis(){
+            if(this.checked == true){
+                // alert(1);
+                successCount++;
+                did.innerText = successCount;
+                
+            }
+            else{
+                successCount--;
+                did.innerText = successCount;
+                allChecked.checked = false;
+            }
+            // alert(1);
+            
+        }
+
+
+        function changeItemList(){
+            item = document.getElementsByClassName("item");
+            for(let i = 0; i < item.length; i++){
+                let pos = item[i].children[1].innerText.indexOf(search.value);
+                if(pos == -1){
+                    addClass(item[i], "invisible");
+                }
+                else if(hasClass(item[i], "invisible")){
+                    // alert("!!");
+                    removeClass(item[i], "invisible");
+                }
+            }
+        }
+
+        function addItem(event){
+            if(event.key == "Enter" && search.value != ""){
+                // let item = document.getElementsByClassName("item");
+                item = document.querySelectorAll(".item");
+                // alert(item.length);
+                let flag = false;
+                for(let i = 0; i < item.length; i++){
+                    let x = item[i].children[1].innerText;
+                    // console.log(x, search.value);
+                    if(x == search.value){
+                        flag = true;
+                        break;
+                    }
+                }
+                if(!flag){
+                    let li = document.createElement("li");
+                    li.className += "item";
+                    li.innerHTML = `<input type="checkbox" name="todo">
+                    <span>${search.value}</span>
+                    <button class="delete" style="opacity: 0;">delete</button>`
+                    let list = document.getElementById("list");
+                    list.insertBefore(li, list.firstElementChild);
+                    li.addEventListener("mouseover", showDelete, false);    
+                    li.addEventListener("mouseout", unshowDelete, false);    
+                    li.children[0].addEventListener("input", dothis, false);
+                    li.lastElementChild.addEventListener("click", deleteList, false);
+                    allCount++;
+                    all.innerText = allCount;
+
+                }
+                
+            }
+        }
+        
+        function showDelete(event){
+            this.children[2].style.opacity = 1;
+        }
+        function unshowDelete(event){
+            this.lastElementChild.style.opacity = 0;
+        }
+    
+        function deleteList(){
+            if(confirm("确定要删除【" + this.parentNode.children[1].innerText + "】吗？")){
+                allCount--;
+                all.innerText = allCount;
+                if(this.parentNode.children[0].checked == true){
+                    successCount--;
+                    did.innerText = successCount;
+                } 
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            }
+        }
+    
+    </script>
+</body>
+</html>
