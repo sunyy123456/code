@@ -8,10 +8,36 @@ import Register from '@/pages/Register'
 import Detail from '@/pages/Detail'
 import AddCartSuccess from '@/pages/AddCartSuccess'
 import ShopCart from '@/pages/ShopCart'
-
-
+import Trade from '@/pages/Trade'
+import Pay from '@/pages/Pay'
+import PaySuccess from '@/pages/PaySuccess'
+import Center from '@/pages/Center'
+import MyOrder from '@/pages/Center/MyOrder'
+import GroupOrder from '@/pages/Center/GroupOrder'
 
 export default [
+    {
+        path: '/center',
+        component: Center,
+        name: 'center',
+        children: [
+            {
+                path: 'myorder',
+                component: MyOrder,
+            },
+            {
+                path: 'grouporder',
+                component: GroupOrder,
+            },
+            {
+                path: '/center',
+                redirect: 'myorder',
+            }
+        ],
+        meta: {
+            showFooter: true
+        }
+    },
     {
         path: '/home',
         component: Home,
@@ -76,6 +102,44 @@ export default [
         name: 'shopcart',
         meta: {
             showFooter: false
+        }
+    },
+    {
+        path: '/trade',
+        component: Trade,
+        name: 'trade',
+        beforeEnter: (to, from, next) => {
+            if(from.path ===  '/shopcart'){
+                next();
+            }else{
+                next(false);
+            }
+        },
+        meta: {
+            showFooter: true
+        }
+    },
+    {
+        path: '/pay',
+        component: Pay,
+        name: 'pay',
+        beforeEnter: (to, from, next) => {
+            if(from.path ===  '/trade'){
+                next();
+            }else{
+                next(false);
+            }
+        },
+        meta: {
+            showFooter: true
+        }
+    },
+    {
+        path: '/paysuccess',
+        component: PaySuccess,
+        name: 'paysuccess',
+        meta: {
+            showFooter: true
         }
     },
     // 重定向：在项目跑起来的时候，访问/，立马让它定向到首页

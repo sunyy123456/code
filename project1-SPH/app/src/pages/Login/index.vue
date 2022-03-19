@@ -80,7 +80,9 @@
         try {
           if(phone && password){
             await this.$store.dispatch('userLogin', {phone, password});
-            this.$router.push('/home');
+            // 登录的路由组件：看路由中是否含有query参数，如果有，则往参数指定路由跳，如果没有，跳到home组件
+            let toPath = this.$route.query.redirect || '/home'
+            this.$router.push(toPath);
           }
         } catch (error) {
           alert(error.message);

@@ -7,6 +7,8 @@ import routes from "./routes";
 // 使用插件
 Vue.use(VueRouter);
 
+import store from '@/store'
+
 // 先把VueRouter原型对象的push，先保存一下
 let originPush = VueRouter.prototype.push;
 let originReplace = VueRouter.prototype.push;
@@ -52,10 +54,44 @@ const router = new VueRouter({
 })
 
 // 全局守卫：前置守卫（在路由跳转前判断）
-router.beforeEach((to, from, next) => {
+router.beforeEach(async(to, from, next) => {
     // to: 可以获取到要跳转的路由信息
     // from：可以获取到从哪个路由而来的信息
     // next：放行函数       next()直接放行  next(path)放行到指定路由    next(false)返回到from（相当于驳回）
+
+    let token = store.state.user.token;
+    let name = store.state.user.userInfo.name;
+    if(token){
+        // 用户登录后便不可以去login
+        if(to.path == '/login'){
+            next('/home')
+        }else{
+            if(name){
+                if(to.path === '/login'){
+                    next('/home');
+                }else{
+                    next();
+                }
+            }else{
+                try {
+                    await store.dispatch('getUserInfo'); 
+                    next();
+                } catch (error) {
+                    store.dispatch('userLayout');
+                    next('/login')
+                }
+            }
+        }
+    }else{
+        // 未登录：不能去交易相关、支付相关、个人中心
+        if(to.path.indexOf('trade') != -1 || to.path.indexOf('pay') != -1 || to.path.indexOf('center') != -1){
+            // 将要去而不能去的路由路径存储于query参数中
+            next('/login?redirect=' + to.path);
+        }else{
+            next();
+        }
+    }
+    
 
 })
 

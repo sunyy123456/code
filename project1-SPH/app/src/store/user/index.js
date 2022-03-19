@@ -56,11 +56,11 @@ const actions = {
         let result = await reqGetUserInfo();
         if(result.code === 200){
             commit('GETUSERINFO', result.data);
-            // return 'ok';
+            return 'ok';
         }
-        // else{
-        //     return Promise.reject(new Error('fail'));
-        // }
+        else{
+            return Promise.reject(new Error('fail'));
+        }
     },
     async userLayout({commit}){
         let result = await reqUserLayout();

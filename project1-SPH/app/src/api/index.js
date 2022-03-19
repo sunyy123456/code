@@ -68,4 +68,27 @@ export const reqUserLayout = () => {
     return requests({url: `/user/passport/logout`, method: 'get'})
 }
 
+export const reqUserAddress = () => {
+    return requests({url: `/user/userAddress/auth/findUserAddressList`, method: 'get'})
+}
+
+export const reqUserOrder = () => {
+    return requests({url: `/order/auth/trade`, method: 'get'})
+}
+
+export const reqSubmitOrder = (tradeNo, data) => {
+    return requests({url: `/order/auth/submitOrder?tradeNo=${tradeNo}`, method: 'post', data})
+}
+
+export const reqOrderInfo = (orderId) => {
+    return requests({url: `/payment/weixin/createNative/${orderId}`, method: 'get'})
+}
+
+export const reqOrderStatus = (orderId) => {
+    return requests({url: `/payment/weixin/queryPayStatus/${orderId}`, method: 'get'})
+}
+
+export const reqGetOrderInfo = (page, limit) => {
+    return requests({url: `/order/auth/${page}/${limit}`, method: 'get'})
+}
 
